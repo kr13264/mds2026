@@ -201,7 +201,165 @@ src/
 
 ---
 
-## 7. 참고 링크
+## 7. Story 가이드 (실제 적용된 패턴)
+
+> Profile/Vertical, Profile/Horizontal, Image, Buttons 에서 확립된 실제 규칙입니다.
+> 새 컴포넌트 추가 시 반드시 이 패턴을 따릅니다.
+
+### 사이드바 구조 (서브 컴포넌트 있는 경우)
+
+서브 컴포넌트가 있는 경우 사이드바는 반드시 아래 형태를 따릅니다.
+
+서브 컴포넌트가 있는 경우 사이드바는 반드시 아래 형태를 따릅니다.
+
+```
+{Name}
+  ├── Docs      ← 항상 맨 위 (index.stories.tsx autodocs)
+  ├── {Sub1}
+  ├── {Sub2}
+  ├── {Sub3}
+  └── Overview  ← 항상 맨 뒤 (index.stories.tsx)
+```
+
+예시 (Buttons):
+
+```
+Buttons
+  ├── Docs      ← 항상 맨 위 (index.stories.tsx autodocs)
+  ├── Basic
+  ├── Icon
+  ├── Segment
+  ├── Group
+  └── Overview  ← 항상 맨 뒤 (index.stories.tsx)
+```
+
+- `Docs`는 항상 **맨 위** — `index.stories.tsx`에 `tags: ['autodocs']` + `title: 'Components/{Name}'`
+- `Overview` story는 `index.stories.tsx` 안에 정의하되 **맨 뒤**에 위치
+- 서브 컴포넌트는 `title: 'Components/{Name}/{Sub}'`로 하위에 표시
+
+### 파일 구조 (서브 컴포넌트 있는 경우)
+
+```
+src/components/{Name}/{Sub}/
+  {Sub}.tsx
+  {Sub}.types.ts
+  index.ts
+src/components/{Name}/
+  index.ts                    ← 모든 서브 re-export
+src/stories/components/{Name}/
+  index.stories.tsx           ← title: 'Components/{Name}' — Docs + Overview
+  {Sub}.stories.tsx           ← title: 'Components/{Name}/{Sub}'
+```
+
+### storySort 설정 (.storybook/preview.tsx)
+
+서브 컴포넌트를 추가할 때마다 `preview.tsx`의 `storySort.order`에 해당 그룹을 등록합니다.
+`Docs`가 항상 맨 앞에 오도록 명시적으로 지정합니다.
+
+```ts
+// .storybook/preview.tsx
+// ⚠️ 배열은 직전 항목의 children — ['Parent', [children]] 형태가 아님
+storySort: {
+  order: [
+    'Home',
+    'Icon',
+    'Components',
+    ['{Name}', ['Docs', '{Sub1}', '{Sub2}', 'Overview', '*'], '*'],
+    'Templates',
+    'Foundation',
+    '*',
+  ],
+},
+
+// 예시 (Buttons):
+// 'Components',
+// ['Buttons', ['Docs', 'Basic', 'Icon', 'Segment', 'Group', 'Overview', '*'], '*'],
+```
+
+### meta 필수 설정
+
+```tsx
+const meta: Meta<typeof Component> = {
+  title: 'Components/{Name}/{Sub}',
+  component: Component,
+  tags: ['autodocs'],           // ← 반드시 포함
+  parameters: { layout: 'centered' },
+  // docs.description.component: 마크다운 설명
+};
+```
+
+### docs description 형식
+
+```
+컴포넌트 설명 문장.
+
+---
+
+<div style="margin-bottom:30px"></div>   ← --- 아래 30px 공백 필수
+
+### Size
+| Size | ... |
+...
+
+### 코드 예시
+```tsx
+...
+```
+```
+
+### 레이아웃 헬퍼 (모든 스토리 파일 상단)
+
+```tsx
+const Row = ({ children, gap = 24 }: { children: React.ReactNode; gap?: number }) => (
+  <div style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap', gap }}>{children}</div>
+);
+
+const Block = ({ label, desc, children }: { label: string; desc?: string; children: React.ReactNode }) => (
+  <div style={{ marginBottom: 32 }}>
+    <p style={{
+      fontFamily: 'Pretendard, sans-serif',
+      fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
+      textTransform: 'uppercase', color: '#9999B8', margin: '0 0 4px',
+    }}>{label}</p>
+    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: '#55557A', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
+    {children}
+  </div>
+);
+```
+
+### 스토리 구성 순서 (고정)
+
+| 순서 | export 명 | name 값 | 내용 |
+|------|-----------|---------|------|
+| 1 | `Playground` | (생략) | 모든 prop 조작 가능 |
+| 2 | `Sizes` | `'Size'` | Measurement 표 + Usage 시각화 |
+| 3 | `Emphasis` | `'Emphasis'` | false/true 비교 |
+| 4 | `Selected` | `'Selected'` | false/true 비교 (해당 시) |
+| 5 | `Contents` | `'Contents'` | 슬롯/prop별 케이스 |
+| 6 | `Matrix` | `'Matrix'` | Size × 기타 조합 전체 표 |
+
+### Story name 규칙
+
+- `—` 뒤 옵션 목록 **제거**
+- ❌ `'Size — default · small'`  ✅ `'Size'`
+
+### 컬러 토큰 (inline style 사용 시)
+
+| 용도 | 값 |
+|------|-----|
+| 기본 텍스트 | `#111122` |
+| 서브 텍스트 | `#55557A` |
+| 비활성 레이블 | `#9999B8` |
+| disabled | `#BBBBCC` |
+| 구분선 | `#E4E4EE` |
+| 옅은 행 구분 | `#F0F0F8` |
+| 배경 | `#F5F5F8` |
+| Primary | `#03A94D` |
+| Secondary (파란색) | `#3283FD` |
+
+---
+
+## 8. 참고 링크
 
 - BON UI GitHub: https://oss.navercorp.com/bonui/bonui
 - Storybook 공식: https://storybook.js.org
