@@ -114,9 +114,19 @@ import { ProfileHorizontal } from '@/components/Profile';
       control: 'text',
       description: '이름 옆 서브 레이블 (점 구분자로 연결)',
     },
+    label: {
+      control: 'boolean',
+      description: '서브 레이블 표시 여부',
+      table: { defaultValue: { summary: 'true' } },
+    },
     info: {
       control: 'text',
       description: '하단 서브 텍스트 (시간, 채널 정보 등)',
+    },
+    date: {
+      control: 'boolean',
+      description: '하단 서브 텍스트 표시 여부',
+      table: { defaultValue: { summary: 'true' } },
     },
   },
 };
@@ -132,7 +142,9 @@ export const Playground: Story = {
     selected: false,
     name: '홍길동',
     sub: '레이블',
+    label: true,
     info: '3분 전',
+    date: true,
     src: AVATAR,
   },
 };

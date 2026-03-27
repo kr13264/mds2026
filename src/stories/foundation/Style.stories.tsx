@@ -55,7 +55,7 @@ const StyleGuide = () => (
     {/* Gradients */}
     <section style={{ marginBottom: '56px' }}>
       <h2 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 20px', color: '#111122' }}>Gradients</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '24px' }}>
         {[
           { name: 'Brand', value: 'linear-gradient(135deg, #6366F1, #D63F85)', tailwind: 'bg-gradient-to-br from-primary-500 to-[#D63F85]' },
           { name: 'Primary', value: 'linear-gradient(135deg, #818CF8, #6366F1)', tailwind: 'bg-gradient-to-br from-primary-400 to-primary-500' },
@@ -64,10 +64,10 @@ const StyleGuide = () => (
           { name: 'Subtle', value: 'linear-gradient(135deg, #EEF2FF, #FFF0F7)', tailwind: 'bg-gradient-to-br from-primary-50 to-pink-50' },
           { name: 'Dark', value: 'linear-gradient(135deg, #111122, #1E1E36)', tailwind: 'bg-gradient-to-br from-[#111122] to-[#1E1E36]' },
         ].map(g => (
-          <div key={g.name} style={{ overflow: 'hidden', borderRadius: '10px', border: '1px solid #E4E4EE' }}>
-            <div style={{ height: '80px', background: g.value }} />
-            <div style={{ padding: '10px 12px', background: '#FFFFFF' }}>
-              <p style={{ margin: '0 0 4px', fontSize: '13px', fontWeight: 600, color: '#111122' }}>{g.name}</p>
+          <div key={g.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
+            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: g.value, border: '1px solid rgba(0,0,0,0.06)', flexShrink: 0 }} />
+            <div style={{ textAlign: 'left' }}>
+              <p style={{ margin: '0 0 2px', fontSize: '12px', fontWeight: 600, color: '#111122' }}>{g.name}</p>
               <code style={{ fontSize: '10px', color: '#6366F1' }}>{g.tailwind}</code>
             </div>
           </div>

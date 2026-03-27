@@ -13,7 +13,9 @@ export const ProfileHorizontal = ({
   alt = '',
   name = '프로필명',
   sub,
+  label = true,
   info,
+  date = true,
   className = '',
 }: ProfileHorizontalProps) => {
   const { avatar, fontSize } = sizeMap[size];
@@ -54,7 +56,7 @@ export const ProfileHorizontal = ({
             style={{
               width: '100%',
               height: '100%',
-              background: 'linear-gradient(180deg, #c8d8e8 0%, #ddd0b8 55%, #e8d4a8 100%)',
+              background: '#E4E4EE',
             }}
           />
         )}
@@ -85,7 +87,7 @@ export const ProfileHorizontal = ({
           >
             {name}
           </span>
-          {sub && (
+          {label && sub && (
             <>
               <span
                 style={{
@@ -114,7 +116,7 @@ export const ProfileHorizontal = ({
         </div>
 
         {/* Row 2: info */}
-        {info && (
+        {date && info && (
           <span
             style={{
               fontSize,

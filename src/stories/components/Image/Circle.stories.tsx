@@ -45,21 +45,22 @@ const meta: Meta<typeof ImageCircle> = {
 
 | Size | px | Usage |
 |------|----|-------|
-| \`32\` | 32px | 리스트 내 소형 아바타 |
-| \`40\` | 40px | 댓글·리플라이 아바타 |
-| \`48\` | 48px | 기본 프로필 크기 |
-| \`56\` | 56px | 강조 프로필 |
-| \`64\` | 64px | 카드 내 프로필 |
-| \`80\` | 80px | 섹션 상단 프로필 |
-| \`96\` | 96px | 채널·그룹 썸네일 |
-| \`120\` | 120px | 마이페이지 대형 프로필 |
+| \`3xs\` | 16px | 이미지 강조형 템플릿에서 출처 프로필 표기 |
+| \`2xs\` | 20px | 버튼 내부에 파비콘 이미지를 노출하는 경우 |
+| \`xs\`  | 24px | 기준 출처 프로필 이미지 |
+| \`sm\`  | 28px | 칩 내부에 섬네일 정보를 포함하는 경우 |
+| \`md\`  | 36px | 홈피드에 출처 정보를 강조하는 경우 |
+| \`lg\`  | 40px | 기본적인 Image 형태 |
+| \`xl\`  | 48px | 메인 콘텐츠가 대표 브랜드 또는 프로필 정보인 경우 |
+| \`2xl\` | 52px | 메인 콘텐츠가 대표 브랜드 또는 프로필 정보인 경우 (대형) |
 
 ### Type
 
 | Type | Description |
 |------|-------------|
 | \`default\` | 이미지 URL을 받아 표시하는 기본 상태 |
-| \`noImage\` | 이미지가 없는 경우 아이콘과 빈 배경 표시 |
+| \`noImage\` | 이미지가 없는 경우 — N 로고 아이콘 표시 |
+| \`noImgPerson\` | 이미지가 없는 사람 프로필 — 사람 실루엣 아이콘 표시 |
 | \`placeHolder\` | 이미지 로딩 중 shimmer 애니메이션 표시 |
 
 ### State
@@ -82,16 +83,16 @@ import { ImageCircle } from '@/components/Images';
   argTypes: {
     size: {
       control: 'select',
-      options: [32, 40, 48, 56, 64, 80, 96, 120] satisfies ImageCircleSize[],
-      description: '이미지 크기 (px)',
+      options: ['3xs', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'] satisfies ImageCircleSize[],
+      description: '이미지 크기',
       table: {
         type: { summary: 'ImageCircleSize' },
-        defaultValue: { summary: '48' },
+        defaultValue: { summary: 'md' },
       },
     },
     type: {
       control: 'select',
-      options: ['default', 'noImage', 'placeHolder'] satisfies ImageCircleType[],
+      options: ['default', 'noImage', 'noImgPerson', 'placeHolder'] satisfies ImageCircleType[],
       description: '이미지 표시 타입',
       table: {
         type: { summary: 'ImageCircleType' },
@@ -117,60 +118,55 @@ type Story = StoryObj<typeof ImageCircle>;
 // ── Playground ─────────────────────────────────────────────────────────────
 export const Playground: Story = {
   args: {
-    size: 48,
+    size: 'md',
     type: 'default',
     src: IMG_SRC,
   },
 };
 
 // ── Sizes ──────────────────────────────────────────────────────────────────
+const SIZE_META: { size: ImageCircleSize; px: number; usage: string }[] = [
+  { size: '3xs', px: 16, usage: '출처 프로필 (강조형 템플릿)' },
+  { size: '2xs', px: 20, usage: '버튼 내부 파비콘 이미지' },
+  { size: 'xs',  px: 24, usage: '기준 출처 프로필' },
+  { size: 'sm',  px: 28, usage: '칩 내부 섬네일' },
+  { size: 'md',  px: 36, usage: '홈피드 출처 강조' },
+  { size: 'lg',  px: 40, usage: '기본 Image 형태' },
+  { size: 'xl',  px: 48, usage: '메인 콘텐츠 대표 프로필' },
+  { size: '2xl', px: 52, usage: '메인 콘텐츠 대표 프로필 (대형)' },
+];
+
 export const Sizes: Story = {
   name: 'Size',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <Block label="Measurement" desc="크기 기준으로 정의. 사용 맥락의 레이아웃 밀도에 따라 선택합니다.">
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ borderCollapse: 'collapse', fontFamily: 'Pretendard, sans-serif', fontSize: 12, whiteSpace: 'nowrap' }}>
-            <thead>
-              <tr style={{ borderBottom: '1px solid #E4E4EE' }}>
-                {['Attribute', '32', '40', '48', '56', '64', '80', '96', '120'].map(h => (
-                  <th key={h} style={{ padding: '8px 16px', textAlign: 'center', fontWeight: 700, color: '#55557A' }}>{h}</th>
-                ))}
+        <table style={{ borderCollapse: 'collapse', fontFamily: 'Pretendard, sans-serif', fontSize: 12, width: '100%' }}>
+          <thead>
+            <tr style={{ borderBottom: '1px solid #E4E4EE' }}>
+              {['Size', 'px', 'Usage'].map(h => (
+                <th key={h} style={{ padding: '8px 16px', textAlign: 'left', fontWeight: 700, color: '#55557A' }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {SIZE_META.map(s => (
+              <tr key={s.size} style={{ borderBottom: '1px solid #F0F0F8' }}>
+                <td style={{ padding: '8px 16px', fontWeight: 600, color: '#111122' }}>{s.size}</td>
+                <td style={{ padding: '8px 16px', color: '#111122' }}>{s.px}px</td>
+                <td style={{ padding: '8px 16px', color: '#55557A' }}>{s.usage}</td>
               </tr>
-            </thead>
-            <tbody>
-              <tr style={{ borderBottom: '1px solid #F0F0F8' }}>
-                <td style={{ padding: '8px 16px', fontWeight: 600, color: '#55557A' }}>Size (px)</td>
-                {[32, 40, 48, 56, 64, 80, 96, 120].map(s => (
-                  <td key={s} style={{ padding: '8px 16px', textAlign: 'center', color: '#111122' }}>{s}</td>
-                ))}
-              </tr>
-              <tr style={{ borderBottom: '1px solid #F0F0F8' }}>
-                <td style={{ padding: '8px 16px', fontWeight: 600, color: '#55557A' }}>Usage</td>
-                {[
-                  '소형 아바타',
-                  '댓글 아바타',
-                  '기본 프로필',
-                  '강조 프로필',
-                  '카드 프로필',
-                  '섹션 상단',
-                  '채널 썸네일',
-                  '마이페이지',
-                ].map((usage, i) => (
-                  <td key={i} style={{ padding: '8px 16px', textAlign: 'center', color: '#111122' }}>{usage}</td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </Block>
 
       <Block label="Usage" desc="크기 별 시각화">
         <Row gap={12}>
-          {([32, 40, 48, 56, 64, 80, 96, 120] as ImageCircleSize[]).map(size => (
+          {SIZE_META.map(({ size, px }) => (
             <div key={size} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <ImageCircle src={IMG_SRC} size={size} />
-              <Caption>{size}</Caption>
+              <Caption>{size} · {px}px</Caption>
             </div>
           ))}
         </Row>
@@ -184,11 +180,11 @@ export const Types: Story = {
   name: 'Type',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      <Block label="Types" desc="이미지 표시 상태에 따른 3가지 타입 (size=64)">
+      <Block label="Types" desc="이미지 표시 상태에 따른 4가지 타입 (size=xl)">
         <Row gap={16}>
-          {(['default', 'noImage', 'placeHolder'] as ImageCircleType[]).map(type => (
+          {(['default', 'noImage', 'noImgPerson', 'placeHolder'] as ImageCircleType[]).map(type => (
             <div key={type} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <ImageCircle type={type} size={64} src={type === 'default' ? IMG_SRC : undefined} />
+              <ImageCircle type={type} size="xl" src={type === 'default' ? IMG_SRC : undefined} />
               <Caption>{type}</Caption>
             </div>
           ))}
@@ -204,10 +200,10 @@ export const States: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <Block label="enabled" desc="기본 상태. 사용자가 인터랙션 가능한 경우">
-        <ImageCircle src={IMG_SRC} size={64} />
+        <ImageCircle src={IMG_SRC} size="xl" />
       </Block>
       <Block label="disabled" desc="비활성 상태. opacity 0.35, pointer-events none">
-        <ImageCircle src={IMG_SRC} size={64} disabled />
+        <ImageCircle src={IMG_SRC} size="xl" disabled />
       </Block>
     </div>
   ),
@@ -217,8 +213,8 @@ export const States: Story = {
 export const Matrix: Story = {
   name: 'Matrix',
   render: () => {
-    const sizes: ImageCircleSize[] = [32, 40, 48, 56, 64, 80, 96, 120];
-    const types: ImageCircleType[] = ['default', 'noImage', 'placeHolder'];
+    const sizes: ImageCircleSize[] = ['3xs', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+    const types: ImageCircleType[] = ['default', 'noImage', 'noImgPerson', 'placeHolder'];
     return (
       <div style={{ fontFamily: 'Pretendard, sans-serif', overflowX: 'auto', padding: 4 }}>
         <table style={{ borderCollapse: 'collapse' }}>

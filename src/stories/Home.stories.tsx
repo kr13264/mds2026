@@ -3,19 +3,19 @@ import type { Meta, StoryObj } from '@storybook/react';
 // ── Icons ──────────────────────────────────────────────────────────────────
 // 일관된 사용자 경험 — Material Symbols "apps"
 const IconConsistency = () => (
-  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#1A6FE8', userSelect: 'none' }}>
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#55557A', userSelect: 'none' }}>
     apps
   </span>
 );
 // 효율적인 업무 프로세스 — Material Symbols "hub"
 const IconProcess = () => (
-  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#1A6FE8', userSelect: 'none' }}>
-    partner_exchange
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#55557A', userSelect: 'none' }}>
+    dataset_linked
   </span>
 );
 // 생산성 극대화 — Material Symbols "recycling"
 const IconProductivity = () => (
-  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#1A6FE8', userSelect: 'none' }}>
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#55557A', userSelect: 'none' }}>
     recycling
   </span>
 );
@@ -93,9 +93,9 @@ const HomePage = () => (
       <div style={{
         display: 'flex', alignItems: 'flex-start', gap: 10,
         padding: '14px 18px', borderRadius: 8,
-        background: '#EBF2FF', border: '1px solid #C7D8FD',
+        background: '#F4F4F6', border: '1px solid #DDDDE8',
         marginBottom: '40px',
-        fontSize: 14, color: '#2255BB', lineHeight: 1.6,
+        fontSize: 14, color: '#111122', lineHeight: 1.6,
       }}>
         <span>MDS는 일관되고 효율적인 네이버앱과 메인 서비스 경험을 만들기 위한 통합 디자인 시스템입니다.</span>
       </div>

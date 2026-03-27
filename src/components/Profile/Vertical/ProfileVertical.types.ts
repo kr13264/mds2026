@@ -13,6 +13,8 @@ export interface ProfileProps {
   alt?: string;
   /** 프로필 이름 */
   name?: string;
+  /** 레이블 표시 여부 */
+  label?: boolean;
   /** 서브 텍스트 (시간, 채널명 등) */
   info?: string;
   className?: string;

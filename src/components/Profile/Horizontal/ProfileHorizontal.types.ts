@@ -15,7 +15,11 @@ export interface ProfileHorizontalProps {
   name?: string;
   /** 이름 옆 서브 레이블 (점 구분자로 연결) */
   sub?: string;
+  /** 서브 레이블 표시 여부 */
+  label?: boolean;
   /** 하단 서브 텍스트 (시간, 채널 정보 등) */
   info?: string;
+  /** 하단 서브 텍스트 표시 여부 */
+  date?: boolean;
   className?: string;
 }

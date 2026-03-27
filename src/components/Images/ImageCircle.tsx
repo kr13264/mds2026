@@ -1,5 +1,41 @@
-export type ImageCircleType = 'default' | 'noImage' | 'placeHolder';
-export type ImageCircleSize = 32 | 40 | 48 | 56 | 64 | 80 | 96 | 120;
+export type ImageCircleType = 'default' | 'noImage' | 'noImgPerson' | 'placeHolder';
+export type ImageCircleSize = '3xs' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+const sizeMap: Record<ImageCircleSize, number> = {
+  '3xs': 16,
+  '2xs': 20,
+  'xs':  24,
+  'sm':  28,
+  'md':  36,
+  'lg':  40,
+  'xl':  48,
+  '2xl': 52,
+};
+
+const FALLBACK_BG = '#D9D9D9';
+const FALLBACK_FG = '#B3B3B3';
+
+// noImage: 회색 원 + 회색 N (피그마 시안처럼 폰트 의존 없이 path로 구현)
+const NoImageIcon = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    {/* N */}
+    <path
+      d="M16 34V14h5.2l5.6 10.6V14H32v20h-5.2l-5.6-10.6V34H16z"
+      fill={FALLBACK_FG}
+    />
+  </svg>
+);
+
+// noImgPerson: 회색 원 + 회색 사람 실루엣
+const NoImgPersonIcon = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <circle cx="24" cy="19" r="7.5" fill={FALLBACK_FG} />
+    <path
+      d="M12.5 40.5c0-6.4 5.2-11.6 11.5-11.6s11.5 5.2 11.5 11.6V43H12.5v-2.5z"
+      fill={FALLBACK_FG}
+    />
+  </svg>
+);
 
 export interface ImageCircleProps {
   src?: string;
@@ -10,27 +46,18 @@ export interface ImageCircleProps {
   className?: string;
 }
 
-const NoImageIcon = ({ size }: { size: number }) => {
-  const s = Math.round(size * 0.35);
-  return (
-    <svg width={s} height={s} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 17l5-5 3 3 2.5-2.5L19 17" stroke="rgba(0,0,0,.28)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="8.5" cy="9.5" r="2" stroke="rgba(0,0,0,.28)" strokeWidth="1.8" />
-    </svg>
-  );
-};
-
 export const ImageCircle = ({
   src,
   alt = '',
   type = 'default',
-  size = 48,
+  size = 'md',
   disabled = false,
   className = '',
 }: ImageCircleProps) => {
+  const px = sizeMap[size];
   const base: React.CSSProperties = {
-    width: size,
-    height: size,
+    width: px,
+    height: px,
     borderRadius: '50%',
     overflow: 'hidden',
     flexShrink: 0,
@@ -58,8 +85,16 @@ export const ImageCircle = ({
 
   if (type === 'noImage') {
     return (
-      <div style={{ ...base, background: '#e8e8ee' }} className={className}>
-        <NoImageIcon size={size} />
+      <div style={{ ...base, background: FALLBACK_BG }} className={className}>
+        <NoImageIcon size={px} />
+      </div>
+    );
+  }
+
+  if (type === 'noImgPerson') {
+    return (
+      <div style={{ ...base, background: FALLBACK_BG }} className={className}>
+        <NoImgPersonIcon size={px} />
       </div>
     );
   }

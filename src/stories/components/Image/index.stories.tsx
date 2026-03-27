@@ -99,7 +99,7 @@ export const Overview: Story = {
 
       <Block label="Circle" desc="원형 이미지. 프로필·아바타·채널 썸네일에 사용">
         <Row gap={12} >
-          {([32, 48, 64, 80, 96] as const).map(size => (
+          {(['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map(size => (
             <div key={size} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <ImageCircle src={IMG_SRC} size={size} />
               <Caption>{size}</Caption>

@@ -107,6 +107,11 @@ import { ProfileVertical } from '@/components/Profile';
       description: '프로필/채널 이름',
       table: { defaultValue: { summary: '프로필명' } },
     },
+    label: {
+      control: 'boolean',
+      description: '레이블 표시 여부',
+      table: { defaultValue: { summary: 'true' } },
+    },
     info: {
       control: 'text',
       description: '서브 텍스트 (시간, 채널 정보 등)',
@@ -124,6 +129,7 @@ export const Playground: Story = {
     emphasis: false,
     selected: false,
     name: '홍길동',
+    label: true,
     info: '3분 전',
     src: AVATAR,
   },

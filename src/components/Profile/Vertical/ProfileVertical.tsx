@@ -12,6 +12,7 @@ export const Profile = ({
   src,
   alt = '',
   name = '프로필명',
+  label = true,
   info,
   className = '',
 }: ProfileProps) => {
@@ -53,7 +54,7 @@ export const Profile = ({
             style={{
               width: '100%',
               height: '100%',
-              background: 'linear-gradient(180deg, #c8d8e8 0%, #ddd0b8 55%, #e8d4a8 100%)',
+              background: '#E4E4EE',
             }}
           />
         )}
@@ -82,7 +83,7 @@ export const Profile = ({
         >
           {name}
         </span>
-        {info && (
+        {label && info && (
           <span
             style={{
               fontSize,
