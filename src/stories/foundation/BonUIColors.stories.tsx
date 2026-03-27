@@ -11,12 +11,13 @@ const Swatch = ({ name, variable, tailwind }: SwatchProps) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
     <div
       style={{
-        width: '100%',
-        height: '48px',
-        borderRadius: '8px',
+        width: '36px',
+        height: '36px',
+        borderRadius: '50%',
         backgroundColor: `var(${variable})`,
         border: '1px solid rgba(0,0,0,0.08)',
         boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)',
+        flexShrink: 0,
       }}
     />
     <div>

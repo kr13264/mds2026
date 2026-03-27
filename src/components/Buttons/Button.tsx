@@ -48,7 +48,7 @@ const variantColorClasses: Record<VariantKey, Record<ColorKey, string>> = {
   solid: {
     primary: [
       'bg-primary-background-default text-white',
-      'hover:bg-primary-600 active:bg-primary-700',
+      'hover:opacity-90 active:opacity-80',
       'focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2',
     ].join(' '),
     secondary: [

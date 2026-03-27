@@ -54,20 +54,20 @@
   --neutral-stroke-emphasis:            #111122;
 
   /* Primary */
-  --primary-background-default:         #6366F1;
-  --primary-background-subtle-1:        #EEF2FF;
-  --primary-background-subtle-2:        #E0E7FF;
-  --primary-background-decorative:      #C7D2FE;
-  --primary-foreground-default:         #6366F1;
-  --primary-foreground-subtle:          #818CF8;
+  --primary-background-default:         #03A94D;
+  --primary-background-subtle-1:        #E6F9EE;
+  --primary-background-subtle-2:        #C0F0D4;
+  --primary-background-decorative:      #80E0AA;
+  --primary-foreground-default:         #03A94D;
+  --primary-foreground-subtle:          #1DBF60;
   --primary-foreground-inverted:        #FFFFFF;
-  --primary-stroke-default:             #6366F1;
+  --primary-stroke-default:             #03A94D;
 
   /* Secondary */
-  --secondary-background-default:       #D63F85;
-  --secondary-background-subtle-1:      #FFF0F7;
-  --secondary-foreground-default:       #D63F85;
-  --secondary-stroke-default:           #D63F85;
+  --secondary-background-default:       #3283FD;
+  --secondary-background-subtle-1:      #EBF2FF;
+  --secondary-foreground-default:       #3283FD;
+  --secondary-stroke-default:           #3283FD;
 
   /* Function */
   --function-common-positive-default:   #12B76A;
@@ -111,4 +111,23 @@
     color: var(--neutral-foreground-default);
     background-color: var(--neutral-background-default);
   }
+}
+
+/* ── Storybook Docs padding ── */
+.sbdocs-wrapper {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+/* ── Storybook Docs table header ── */
+.sbdocs-content table thead tr {
+  background-color: #F5F5F8 !important;
+}
+.sbdocs-content table tbody tr {
+  background-color: #FFFFFF !important;
+}
+
+/* ── Storybook Docs table spacing ── */
+.sbdocs-content table {
+  margin-bottom: 48px !important;
 }

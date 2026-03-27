@@ -11,13 +11,6 @@ export interface ImagePlaceProps {
   className?: string;
 }
 
-const NoImageIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect width="24" height="24" rx="4" fill="rgba(0,0,0,0.06)" />
-    <path d="M4 17l5-5 3 3 2.5-2.5L19 17" stroke="rgba(0,0,0,.22)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="8.5" cy="9.5" r="1.5" stroke="rgba(0,0,0,.22)" strokeWidth="1.4" />
-  </svg>
-);
 
 export const ImagePlace = ({ type = 'default', src, alt = '', size = 140, className = '' }: ImagePlaceProps) => {
   const base: React.CSSProperties = {
@@ -44,10 +37,24 @@ export const ImagePlace = ({ type = 'default', src, alt = '', size = 140, classN
   }
 
   if (type === 'noImage') {
+    // elem.logo: 22×20 px in a 150×150 container (Figma)
+    const logoW = Math.round(size * (22 / 150));
+    const logoH = Math.round(logoW * (20 / 22));
     return (
-      <div style={{ ...base, background: '#e8e8ee', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 4 }} className={className}>
-        <NoImageIcon />
-        <span style={{ fontSize: 10, color: 'rgba(0,0,0,.3)', fontFamily: 'Pretendard,sans-serif', fontWeight: 600 }}>N</span>
+      <div style={{ ...base, background: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className={className}>
+        <svg
+          width={logoW}
+          height={logoH}
+          viewBox="0 0 22 20"
+          aria-hidden="true"
+        >
+          {/* Left vertical bar */}
+          <rect x="0" y="0" width="5.5" height="20" fill="#CCCED0"/>
+          {/* Diagonal stripe (parallelogram) */}
+          <polygon points="5.5,0 11,0 16.5,20 11,20" fill="#CCCED0"/>
+          {/* Right vertical bar */}
+          <rect x="16.5" y="0" width="5.5" height="20" fill="#CCCED0"/>
+        </svg>
       </div>
     );
   }

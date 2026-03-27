@@ -4,15 +4,16 @@ import '../src/index.css';
 const preview: Preview = {
   parameters: {
     options: {
-      storySort: (a, b) => {
-        if (a.title !== b.title) {
-          if (b.title.startsWith(a.title + '/') && a.type === 'docs') return -1;
-          if (a.title.startsWith(b.title + '/') && b.type === 'docs') return 1;
-          return a.title.localeCompare(b.title);
-        }
-        if (a.type === 'docs') return -1;
-        if (b.type === 'docs') return 1;
-        return a.name.localeCompare(b.name);
+      storySort: {
+        order: [
+          'Home',
+          'Foundation',
+          'Icon',
+          'Components',
+          ['Buttons', ['Docs', 'Basic', 'Icon', 'Segment', 'Group', 'Overview', '*'], '*'],
+          'Templates',
+          '*',
+        ],
       },
     },
     controls: {
@@ -23,7 +24,7 @@ const preview: Preview = {
     },
     layout: 'centered',
     backgrounds: {
-      default: 'light',
+      default: 'white',
       values: [
         { name: 'light', value: '#F5F5F8' },
         { name: 'white', value: '#FFFFFF' },
@@ -37,7 +38,7 @@ const preview: Preview = {
         desktop: { name: 'Desktop (1280)', styles: { width: '1280px', height: '900px' } },
         wide: { name: 'Wide (1440)', styles: { width: '1440px', height: '900px' } },
       },
-      defaultViewport: 'desktop',
+      defaultViewport: 'responsive',
     },
   },
   globalTypes: {

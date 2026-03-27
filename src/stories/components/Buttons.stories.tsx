@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@/components/Buttons';
+import { ButtonBasic as Button } from '@/components/Buttons';
 import type { ButtonVariant, ButtonSize, ButtonColor } from '@/components/Buttons';
 
 // ── 샘플 아이콘 ────────────────────────────────────────────────────────────
@@ -59,7 +59,7 @@ const figmaNode = (nodeId: string) => ({
 
 // ── Meta ───────────────────────────────────────────────────────────────────
 const meta: Meta<typeof Button> = {
-  title: 'Components/Buttons',
+  title: 'Components/Buttons/Basic',
   component: Button,
   tags: ['autodocs'],
   parameters: {
@@ -77,6 +77,8 @@ const meta: Meta<typeof Button> = {
 원형(Round)과 사각형(Square) 형태를 제공하고, 적절한 Radius값으로 조절하여 사용합니다.
 
 ---
+
+<div style="margin-bottom:30px"></div>
 
 ### Type
 
@@ -204,7 +206,7 @@ export const Playground: Story = {
 
 // ── Style (Variant) ────────────────────────────────────────────────────────
 export const Styles: Story = {
-  name: 'Style — plain · outlined · tonal · solid',
+  name: 'Style',
   parameters: {
     ...figmaNode('0-2'), // TODO: Style 섹션 프레임 node-id로 교체
   },
@@ -248,7 +250,7 @@ export const Styles: Story = {
 
 // ── Size ───────────────────────────────────────────────────────────────────
 export const Sizes: Story = {
-  name: 'Size — xs · sm · md · lg · xl · 2xl',
+  name: 'Size',
   parameters: {
     ...figmaNode('0-3'), // TODO: Size 섹션 프레임 node-id로 교체
   },
@@ -310,7 +312,7 @@ export const Sizes: Story = {
 
 // ── State ──────────────────────────────────────────────────────────────────
 export const States: Story = {
-  name: 'State — enabled · disabled · loading',
+  name: 'State',
   parameters: {
     ...figmaNode('0-4'), // TODO: State 섹션 프레임 node-id로 교체
   },
@@ -345,7 +347,7 @@ export const States: Story = {
 
 // ── Contents (Slots) ───────────────────────────────────────────────────────
 export const Contents: Story = {
-  name: 'Contents — iconHead · iconTail · count · thumbnail',
+  name: 'Contents',
   parameters: {
     ...figmaNode('0-5'), // TODO: Contents 섹션 프레임 node-id로 교체
   },
@@ -376,12 +378,12 @@ export const Contents: Story = {
       </Block>
       <Block label="icon only" desc="단일 아이콘 버튼 (type=icon). px를 줄여 정사각형 형태로 사용합니다.">
         <Row>
-          <Button variant="solid" className="!px-2.5"><IcPlus /></Button>
-          <Button variant="tonal" className="!px-2.5"><IcDownload /></Button>
-          <Button variant="outlined" className="!px-2.5"><IcShare /></Button>
-          <Button variant="plain" className="!px-2.5"><IcTrash /></Button>
-          <Button variant="solid" size="sm" className="!px-2"><IcPlus /></Button>
-          <Button variant="solid" size="lg" className="!px-3"><IcPlus /></Button>
+          <Button variant="solid" iconHead={<IcPlus />} className="!px-2.5" />
+          <Button variant="tonal" iconHead={<IcDownload />} className="!px-2.5" />
+          <Button variant="outlined" iconHead={<IcShare />} className="!px-2.5" />
+          <Button variant="plain" iconHead={<IcTrash />} className="!px-2.5" />
+          <Button variant="solid" size="sm" iconHead={<IcPlus />} className="!px-2" />
+          <Button variant="solid" size="lg" iconHead={<IcPlus />} className="!px-3" />
         </Row>
       </Block>
     </div>
@@ -390,19 +392,19 @@ export const Contents: Story = {
 
 // ── FAB ────────────────────────────────────────────────────────────────────
 export const FAB: Story = {
-  name: 'FAB — Floating Action Button',
+  name: 'FAB',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <Block label="fab=false" desc="일반 버튼 형태로 사용합니다.">
         <Row>
           <Button variant="solid" fab={false} iconHead={<IcPlus />}>새로 만들기</Button>
-          <Button variant="solid" fab={false} className="!px-2.5"><IcPlus /></Button>
+          <Button variant="solid" fab={false} iconHead={<IcPlus />} className="!px-2.5" />
         </Row>
       </Block>
       <Block label="fab=true" desc="화면 상위에 독립적으로 노출하는 경우 사용합니다. shadow 적용.">
         <Row>
           <Button variant="solid" fab iconHead={<IcPlus />}>새로 만들기</Button>
-          <Button variant="solid" fab className="!px-2.5 rounded-full"><IcPlus /></Button>
+          <Button variant="solid" fab iconHead={<IcPlus />} className="!px-2.5 rounded-full" />
         </Row>
       </Block>
     </div>
@@ -426,7 +428,7 @@ export const FullWidth: Story = {
 
 // ── Matrix (Variant × Size) ────────────────────────────────────────────────
 export const Matrix: Story = {
-  name: 'Matrix — Style × Size',
+  name: 'Matrix',
   render: () => {
     const variants: ButtonVariant[] = ['solid', 'tonal', 'outlined', 'plain'];
     const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];

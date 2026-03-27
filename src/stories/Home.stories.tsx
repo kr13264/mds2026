@@ -1,162 +1,260 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-const cards = [
+// ── Icons ──────────────────────────────────────────────────────────────────
+// 일관된 사용자 경험 — Material Symbols "apps"
+const IconConsistency = () => (
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#1A6FE8', userSelect: 'none' }}>
+    apps
+  </span>
+);
+// 효율적인 업무 프로세스 — Material Symbols "hub"
+const IconProcess = () => (
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#1A6FE8', userSelect: 'none' }}>
+    partner_exchange
+  </span>
+);
+// 생산성 극대화 — Material Symbols "recycling"
+const IconProductivity = () => (
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#1A6FE8', userSelect: 'none' }}>
+    recycling
+  </span>
+);
+
+// ── 데이터 ─────────────────────────────────────────────────────────────────
+const scopeItems = [
   {
-    title: 'Foundation',
-    desc: 'BON UI 컬러 토큰, 레이아웃 그리드, 타이포그래피, 그라디언트 등 디자인의 기반을 정의합니다.',
-    icon: '◈', color: '#6366F1', bg: '#EEF2FF',
+    name: 'Foundations (BON UI)',
+    desc: [
+      '디자인 시스템의 시각적 기반을 구성하는 핵심 요소의 집합입니다.',
+      'Color, Typography 등 모든 Component와 Module에 공통으로 적용되는 디자인 원칙과 토큰을 정의합니다.',
+    ],
+    disabled: false,
   },
   {
-    title: 'Icon',
-    desc: '서비스 전반에서 사용하는 아이콘 세트입니다. 추후 업데이트 예정입니다.',
-    icon: '⬡', color: '#9999B8', bg: '#F5F5F8',
+    name: 'Layout',
+    desc: [
+      '화면을 구성하는 공간적 구조와 배치 규칙을 정의하는 체계입니다.',
+      'Grid, Breakpoint, Container 등 콘텐츠가 화면 내에서 정렬되고 반응하는 방식에 대한 기준을 제공합니다.',
+    ],
+    disabled: false,
   },
   {
-    title: 'Components',
-    desc: 'Badge, Button, Chip, Divider 등 16개 이상의 재사용 가능한 UI 컴포넌트를 제공합니다.',
-    icon: '⬒', color: '#D63F85', bg: '#FFF0F7',
+    name: 'Components',
+    desc: [
+      '시스템과 상호 작용하는 가장 작은 단위의 구성요소입니다.',
+      '임의 편집이 불가하며, 규정된 가이드라인을 준수하여 활용합니다.',
+    ],
+    disabled: false,
   },
   {
-    title: 'Templates',
-    desc: '대시보드, 랜딩페이지, 폼 페이지 등 자주 사용되는 레이아웃 패턴을 제공합니다.',
-    icon: '▦', color: '#12B76A', bg: '#F0FDF4',
+    name: 'Modules',
+    desc: [
+      '하나 이상의 Component가 조합되어 특정 기능 또는 콘텐츠 영역을 구성하는 단위입니다.',
+      '서비스의 맥락에 따라 Component를 조합하여 구성되며, 구성 방식은 가이드라인 내 허용 범위를 준수합니다.',
+    ],
+    disabled: true,
   },
 ];
 
-const stats = [
-  { label: 'Components', value: '16', icon: '⬡' },
-  { label: 'Color Tokens', value: '422+', icon: '◉' },
-  { label: 'Templates', value: '3', icon: '▦' },
-  { label: 'Foundation', value: '3', icon: '◈' },
+const usageItems = [
+  {
+    name: '디자인',
+    items: [
+      '네이버 메인에서 공통으로 활용 가능한 컴포넌트를 MDS에 정의합니다.',
+      '신규 서비스 디자인 진행 시 반드시 정의된 컴포넌트를 사용하고, 원하는 컴포넌트가 없는 경우에만 신규로 디자인합니다.',
+      '신규 디자인 중 공통화 가능한 컴포넌트는 MDS에 추가하고 재사용합니다.',
+    ],
+  },
 ];
 
+// ── Page ──────────────────────────────────────────────────────────────────
 const HomePage = () => (
   <div style={{
     fontFamily: "'Pretendard', -apple-system, sans-serif",
-    maxWidth: '960px',
-    margin: '0 auto',
-    padding: '48px 32px',
     color: '#111122',
+    background: '#FFFFFF',
+    padding: '40px',
+    minHeight: '100vh',
+    boxSizing: 'border-box',
   }}>
-    {/* Header */}
-    <div style={{ marginBottom: '56px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-        <div style={{
-          width: '48px', height: '48px', borderRadius: '12px',
-          background: 'linear-gradient(135deg, #6366F1, #D63F85)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: '#fff', fontSize: '20px', fontWeight: 800, flexShrink: 0,
-        }}>M</div>
-        <div>
-          <p style={{ fontSize: '13px', color: '#9999B8', margin: 0, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase' }}>NAVER UX</p>
-          <h1 style={{ fontSize: '28px', fontWeight: 800, margin: 0, letterSpacing: '-0.5px', lineHeight: 1.2 }}>
-            MDS Design System
-          </h1>
-        </div>
+    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+
+      {/* ── Header ── */}
+      <div style={{ marginBottom: '32px' }}>
+        <h1 style={{ fontSize: '36px', fontWeight: 800, margin: '0 0 8px', letterSpacing: '-0.5px', lineHeight: 1.2 }}>
+          Main Design System
+        </h1>
+        <p style={{ fontSize: '13px', color: '#9999B8', margin: 0 }}>
+          NAVER UX · last updated Mar 20, 2026
+        </p>
       </div>
 
-      <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#55557A', maxWidth: '600px', margin: '0 0 28px' }}>
-        MDS(Main Design System)는 NAVER UX의 공통 디자인 언어입니다.
-        BON UI 컬러 토큰, 반응형 레이아웃 가이드, 재사용 가능한 컴포넌트 라이브러리를 제공합니다.
-      </p>
+      {/* ── Info Banner ── */}
+      <div style={{
+        display: 'flex', alignItems: 'flex-start', gap: 10,
+        padding: '14px 18px', borderRadius: 8,
+        background: '#EBF2FF', border: '1px solid #C7D8FD',
+        marginBottom: '40px',
+        fontSize: 14, color: '#2255BB', lineHeight: 1.6,
+      }}>
+        <span>MDS는 일관되고 효율적인 네이버앱과 메인 서비스 경험을 만들기 위한 통합 디자인 시스템입니다.</span>
+      </div>
 
-      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+      {/* ── 3 Value Cards ── */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 0,
+        border: '1px solid #E4E4EE',
+        borderRadius: 12,
+        overflow: 'hidden',
+        marginBottom: '48px',
+      }}>
         {[
-          { label: 'React 18 + TypeScript', color: '#6366F1', bg: '#EEF2FF' },
-          { label: 'Storybook 8.x', color: '#D63F85', bg: '#FFF0F7' },
-          { label: 'Tailwind CSS v3', color: '#12B76A', bg: '#F0FDF4' },
-          { label: 'BON UI Tokens', color: '#F79009', bg: '#FFF7ED' },
-        ].map(tag => (
-          <span key={tag.label} style={{
-            display: 'inline-flex', alignItems: 'center', gap: '6px',
-            padding: '6px 12px', borderRadius: '6px',
-            background: tag.bg, color: tag.color,
-            fontSize: '12px', fontWeight: 600,
-          }}>✦ {tag.label}</span>
+          { icon: <IconConsistency />, title: '일관된 사용자 경험 제공', desc: '명확한 사용 기준과 UX 가이드라인' },
+          { icon: <IconProcess />,     title: '효율적인 업무 프로세스 구축', desc: '체계적인 관리 및 운영으로' },
+          { icon: <IconProductivity />, title: '생산성 극대화', desc: 'AI 기반 도구 활용으로' },
+        ].map((card, i) => (
+          <div key={i} style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '40px 24px 32px',
+            borderRight: i < 2 ? '1px solid #E4E4EE' : 'none',
+            textAlign: 'center', gap: 24,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 72 }}>
+              {card.icon}
+            </div>
+            <div>
+              <p style={{ fontSize: 13, color: '#9999B8', margin: '0 0 4px', lineHeight: 1.5 }}>{card.desc}</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: '#111122', margin: 0, lineHeight: 1.4 }}>{card.title}</p>
+            </div>
+          </div>
         ))}
       </div>
-    </div>
 
-    {/* Stats */}
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-      gap: '16px',
-      marginBottom: '56px',
-    }}>
-      {stats.map(s => (
-        <div key={s.label} style={{
-          padding: '20px', borderRadius: '12px',
-          background: '#FFFFFF', border: '1px solid #E4E4EE',
-          textAlign: 'center',
-        }}>
-          <div style={{ fontSize: '24px', marginBottom: '8px' }}>{s.icon}</div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#6366F1', lineHeight: 1 }}>{s.value}</div>
-          <div style={{ fontSize: '12px', color: '#9999B8', marginTop: '4px', fontWeight: 500 }}>{s.label}</div>
+      {/* ── 범위 ── */}
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, color: '#111122', margin: '0 0 16px', letterSpacing: '-0.3px' }}>범위</h2>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13, border: '1px solid #E4E4EE', borderRadius: 8, overflow: 'hidden' }}>
+            <thead>
+              <tr style={{ background: '#F7F7F9' }}>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE', whiteSpace: 'nowrap', width: '160px' }}>Category</th>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE' }}>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scopeItems.map((item) => (
+                <tr key={item.name} style={{ borderBottom: '1px solid #E4E4EE' }}>
+                  <td style={{ padding: '14px 20px', fontFamily: 'monospace', fontSize: 12, color: item.disabled ? '#BBBBCC' : '#111122', verticalAlign: 'top', whiteSpace: 'nowrap', borderRight: '1px solid #E4E4EE' }}>{item.name}</td>
+                  <td style={{ padding: '14px 20px', verticalAlign: 'top' }}>
+                    {item.desc.map((d, i) => (
+                      <p key={i} style={{ margin: i === 0 ? '0 0 4px' : 0, fontSize: 13, color: item.disabled ? '#BBBBCC' : (i === 0 ? '#111122' : '#55557A'), lineHeight: 1.6 }}>{d}</p>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      ))}
-    </div>
+      </div>
 
-    {/* Section cards */}
-    <h2 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px', letterSpacing: '-0.3px' }}>시스템 구성</h2>
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-      gap: '16px',
-      marginBottom: '56px',
-    }}>
-      {cards.map(c => (
-        <div key={c.title} style={{
-          padding: '24px', borderRadius: '12px',
-          background: '#FFFFFF', border: '1px solid #E4E4EE',
-        }}>
-          <div style={{
-            width: '40px', height: '40px', borderRadius: '10px',
-            background: c.bg, display: 'flex', alignItems: 'center',
-            justifyContent: 'center', fontSize: '20px',
-            color: c.color, marginBottom: '12px',
-          }}>{c.icon}</div>
-          <h3 style={{ fontSize: '15px', fontWeight: 700, margin: '0 0 8px', color: '#111122' }}>{c.title}</h3>
-          <p style={{ fontSize: '13px', color: '#55557A', margin: 0, lineHeight: 1.6 }}>{c.desc}</p>
+      {/* ── 활용 ── */}
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, color: '#111122', margin: '0 0 16px', letterSpacing: '-0.3px' }}>활용</h2>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13, border: '1px solid #E4E4EE', borderRadius: 8, overflow: 'hidden' }}>
+            <thead>
+              <tr style={{ background: '#F7F7F9' }}>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE', whiteSpace: 'nowrap', width: '120px' }}>Category</th>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE' }}>Guidelines</th>
+              </tr>
+            </thead>
+            <tbody>
+              {usageItems.map((section) => (
+                <tr key={section.name} style={{ borderBottom: '1px solid #E4E4EE' }}>
+                  <td style={{ padding: '14px 20px', fontFamily: 'monospace', fontSize: 12, color: '#111122', verticalAlign: 'top', whiteSpace: 'nowrap', borderRight: '1px solid #E4E4EE' }}>{section.name}</td>
+                  <td style={{ padding: '14px 20px', verticalAlign: 'top' }}>
+                    {section.items.map((d, i) => (
+                      <p key={i} style={{ margin: i < section.items.length - 1 ? '0 0 6px' : 0, fontSize: 13, color: '#55557A', lineHeight: 1.6 }}>• {d}</p>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      ))}
-    </div>
+      </div>
 
-    {/* Getting Started */}
-    <h2 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px', letterSpacing: '-0.3px' }}>시작하기</h2>
-    <div style={{
-      borderRadius: '12px', background: '#111122',
-      padding: '24px', marginBottom: '16px',
-    }}>
-      <pre style={{
-        margin: 0, color: '#E0E0F0', fontSize: '13px',
-        lineHeight: 1.8, fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-      }}>{`# 1. 의존성 설치
-pnpm install
+      {/* ── 시스템 구성 ── */}
+      <div style={{ marginBottom: '48px' }}>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#9999B8', margin: '0 0 16px' }}>System</p>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13 }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid #E4E4EE' }}>
+                {['Section', 'Description', 'Status'].map(h => (
+                  <th key={h} style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontWeight: 700, color: '#55557A', whiteSpace: 'nowrap' }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { title: 'Foundation', desc: 'BON UI 컬러 토큰, 레이아웃 그리드, 타이포그래피, 그라디언트 등 디자인의 기반 요소를 정의합니다.', status: 'Live' },
+                { title: 'Icon',       desc: '서비스 전반에서 사용하는 아이콘 세트입니다.', status: 'Coming Soon' },
+                { title: 'Components', desc: 'Badge, Button, Chip, Divider, Image, Profile 등 재사용 가능한 UI 컴포넌트를 제공합니다.', status: 'Live' },
+                { title: 'Templates',  desc: '자주 사용되는 레이아웃 패턴 및 페이지 템플릿을 제공합니다.', status: 'Coming Soon' },
+              ].map(s => {
+                const sc = s.status === 'Live' ? { color: '#03A94D', bg: '#E6F9EE' } : { color: '#9999B8', bg: '#F0F0F4' };
+                return (
+                  <tr key={s.title} style={{ borderBottom: '1px solid #F0F0F8' }}>
+                    <td style={{ padding: '12px 16px 12px 0', fontWeight: 700, color: '#111122', whiteSpace: 'nowrap', verticalAlign: 'top' }}>{s.title}</td>
+                    <td style={{ padding: '12px 16px 12px 0', color: '#55557A', lineHeight: 1.6, verticalAlign: 'top' }}>{s.desc}</td>
+                    <td style={{ padding: '12px 0', verticalAlign: 'top' }}>
+                      <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 700, background: sc.bg, color: sc.color }}>{s.status}</span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-# 2. BON UI 설치 (내부 레지스트리 필요)
-pnpm install @bonui/react @bonui/styles
+      {/* ── Components ── */}
+      <div style={{ marginBottom: '48px' }}>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#9999B8', margin: '0 0 16px' }}>Components</p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {[
+            { name: 'Badge', status: 'Live' }, { name: 'Button', status: 'Live' },
+            { name: 'Chip', status: 'Live' },  { name: 'Divider', status: 'Live' },
+            { name: 'Image', status: 'Live' }, { name: 'Profile', status: 'Live' },
+            { name: 'Input', status: 'Coming Soon' }, { name: 'Select', status: 'Coming Soon' },
+            { name: 'Modal', status: 'Coming Soon' }, { name: 'Toast', status: 'Coming Soon' },
+            { name: 'Tab', status: 'Coming Soon' },   { name: 'Toggle', status: 'Coming Soon' },
+          ].map(c => {
+            const sc = c.status === 'Live' ? { color: '#03A94D', bg: '#E6F9EE' } : { color: '#9999B8', bg: '#F0F0F4' };
+            return (
+              <div key={c.name} style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                padding: '8px 14px', borderRadius: 8,
+                border: '1px solid #E4E4EE', background: '#FFFFFF',
+              }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: '#111122' }}>{c.name}</span>
+                <span style={{ padding: '1px 6px', borderRadius: 3, fontSize: 10, fontWeight: 700, background: sc.bg, color: sc.color }}>{c.status}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
-# 3. Storybook 실행
-pnpm storybook`}</pre>
-    </div>
-    <div style={{
-      padding: '16px 20px', borderRadius: '8px',
-      background: '#EEF2FF', border: '1px solid #C7D2FE',
-      fontSize: '13px', color: '#4338CA', lineHeight: 1.6,
-    }}>
-      💡 <strong>SKILL.md</strong>를 참고하여 컴포넌트 생성 규칙과 BON UI 컬러 토큰 사용법을 확인하세요.
-    </div>
+      {/* ── Footer ── */}
+      <div style={{ paddingTop: 24, borderTop: '1px solid #E4E4EE', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+        <span style={{ fontSize: 12, color: '#9999B8' }}>MDS Design System · NAVER UX · 2025</span>
+        <span style={{ fontSize: 12, color: '#9999B8' }}>Storybook 8 · React 18 · Tailwind CSS v3</span>
+      </div>
 
-    {/* Footer */}
-    <div style={{
-      marginTop: '64px', paddingTop: '24px',
-      borderTop: '1px solid #E4E4EE',
-      display: 'flex', justifyContent: 'space-between',
-      flexWrap: 'wrap', gap: '12px',
-    }}>
-      <span style={{ fontSize: '12px', color: '#9999B8' }}>MDS Design System · NAVER UX · 2025</span>
-      <span style={{ fontSize: '12px', color: '#9999B8' }}>Powered by Storybook 8 · React 18 · Tailwind CSS v3</span>
     </div>
   </div>
 );
@@ -164,7 +262,7 @@ pnpm storybook`}</pre>
 const meta: Meta<typeof HomePage> = {
   title: 'Home',
   component: HomePage,
-  parameters: { layout: 'fullscreen' },
+  parameters: { layout: 'padded' },
 };
 
 export default meta;
