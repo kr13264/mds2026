@@ -1,0 +1,114 @@
+/* ─────────────────────────────────────────────
+   MDS Design System — Global Styles
+   ─────────────────────────────────────────────
+   Font: Pretendard (variable)
+   Color tokens: BON UI (@bonui/styles)
+   ───────────────────────────────────────────── */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── BON UI CSS Variable Fallbacks (light mode) ── */
+/* Install @bonui/styles and import it for the full token set */
+/* import '@bonui/styles'; */
+
+:root {
+  /* Neutral – Background */
+  --neutral-background-default:         #F5F5F8;
+  --neutral-background-base-basic:      #FFFFFF;
+  --neutral-background-raised-1:        #FFFFFF;
+  --neutral-background-raised-2:        #F0F0F4;
+  --neutral-background-separated-1:     #F0F0F4;
+  --neutral-background-separated-2:     #E8E8EF;
+  --neutral-background-disabled:        #F0F0F4;
+  --neutral-background-inverted-1:      #111122;
+  --neutral-background-inverted-2:      #1E1E36;
+  --neutral-background-inverted-3:      #2B2B4A;
+  --neutral-background-static-white:    #FFFFFF;
+  --neutral-background-static-black:    #000000;
+  --neutral-background-dimmed-default:  rgba(0, 0, 0, 0.32);
+  --neutral-background-dimmed-bold:     rgba(0, 0, 0, 0.56);
+  --neutral-background-dimmed-ghost:    rgba(0, 0, 0, 0.08);
+  --neutral-background-alpha-1:         rgba(17, 17, 34, 0.04);
+  --neutral-background-alpha-2:         rgba(17, 17, 34, 0.08);
+  --neutral-background-alpha-3:         rgba(17, 17, 34, 0.12);
+
+  /* Neutral – Foreground */
+  --neutral-foreground-default:         #111122;
+  --neutral-foreground-subtle-1:        #55557A;
+  --neutral-foreground-subtle-2:        #7777A0;
+  --neutral-foreground-subtle-3:        #9999B8;
+  --neutral-foreground-disabled:        #BBBBCC;
+  --neutral-foreground-inverted-default:#FFFFFF;
+  --neutral-foreground-static-white:    #FFFFFF;
+  --neutral-foreground-static-black:    #000000;
+
+  /* Neutral – Stroke */
+  --neutral-stroke-default:             #DCDCE8;
+  --neutral-stroke-subtle-1:            #E8E8F0;
+  --neutral-stroke-subtle-2:            #F0F0F8;
+  --neutral-stroke-divider:             #E4E4EE;
+  --neutral-stroke-emphasis:            #111122;
+
+  /* Primary */
+  --primary-background-default:         #6366F1;
+  --primary-background-subtle-1:        #EEF2FF;
+  --primary-background-subtle-2:        #E0E7FF;
+  --primary-background-decorative:      #C7D2FE;
+  --primary-foreground-default:         #6366F1;
+  --primary-foreground-subtle:          #818CF8;
+  --primary-foreground-inverted:        #FFFFFF;
+  --primary-stroke-default:             #6366F1;
+
+  /* Secondary */
+  --secondary-background-default:       #D63F85;
+  --secondary-background-subtle-1:      #FFF0F7;
+  --secondary-foreground-default:       #D63F85;
+  --secondary-stroke-default:           #D63F85;
+
+  /* Function */
+  --function-common-positive-default:   #12B76A;
+  --function-common-positive-subtle:    #D1FAE5;
+  --function-common-negative-default:   #F04438;
+  --function-common-negative-subtle:    #FEE4E2;
+  --function-common-informative-default:#0BA5EC;
+  --function-common-informative-subtle: #E0F2FE;
+  --function-common-attention-default:  #F79009;
+  --function-common-attention-subtle:   #FEF3C7;
+}
+
+/* ── Dark mode overrides ── */
+.dark {
+  --neutral-background-default:         #111122;
+  --neutral-background-base-basic:      #1A1A2E;
+  --neutral-background-raised-1:        #1E1E36;
+  --neutral-background-raised-2:        #2B2B4A;
+  --neutral-background-separated-1:     #252540;
+  --neutral-background-separated-2:     #2F2F50;
+  --neutral-background-disabled:        #2B2B4A;
+
+  --neutral-foreground-default:         #F0F0F8;
+  --neutral-foreground-subtle-1:        #AAAACC;
+  --neutral-foreground-subtle-2:        #8888AA;
+  --neutral-foreground-subtle-3:        #6666AA;
+  --neutral-foreground-disabled:        #444466;
+
+  --neutral-stroke-default:             #333355;
+  --neutral-stroke-subtle-1:            #2A2A48;
+  --neutral-stroke-divider:             #2E2E50;
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-sans text-sm antialiased;
+    color: var(--neutral-foreground-default);
+    background-color: var(--neutral-background-default);
+  }
+}
