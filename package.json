@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "MDS Design System — Storybook",
   "private": true,
-  "packageManager": "pnpm@10.28.1",
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build": "storybook build",
