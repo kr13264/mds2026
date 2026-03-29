@@ -24,10 +24,10 @@ export const ImagePlace = ({ type = 'default', src, alt = '', size = 140, classN
 
   if (type === 'placeHolder') {
     return (
-      <div style={{ ...base, background: '#e8e8ee' }} className={className}>
+      <div style={{ ...base, background: 'var(--color-neutral-background-separated-1)' }} className={className}>
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(90deg, #e8e8ee 25%, #f4f4f8 50%, #e8e8ee 75%)',
+          background: 'linear-gradient(90deg, var(--color-neutral-background-separated-1) 25%, color-mix(in srgb, var(--color-neutral-background-separated-1) 60%, white) 50%, var(--color-neutral-background-separated-1) 75%)',
           backgroundSize: '200% 100%',
           animation: 'shimmer 1.4s infinite',
         }} />
@@ -41,7 +41,7 @@ export const ImagePlace = ({ type = 'default', src, alt = '', size = 140, classN
     const logoW = Math.round(size * (22 / 150));
     const logoH = Math.round(logoW * (20 / 22));
     return (
-      <div style={{ ...base, background: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className={className}>
+      <div style={{ ...base, background: 'var(--color-neutral-background-separated-1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className={className}>
         <svg
           width={logoW}
           height={logoH}

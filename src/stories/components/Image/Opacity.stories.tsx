@@ -14,15 +14,15 @@ const Block = ({ label, desc, children }: { label: string; desc?: string; childr
     <p style={{
       fontFamily: 'Pretendard, sans-serif',
       fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
-      textTransform: 'uppercase', color: '#9999B8', margin: '0 0 4px',
+      textTransform: 'uppercase', color: 'var(--color-neutral-foreground-subtle-3)', margin: '0 0 4px',
     }}>{label}</p>
-    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: '#55557A', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
+    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: 'var(--color-neutral-foreground-subtle-1)', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
     {children}
   </div>
 );
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ fontFamily: 'Pretendard,sans-serif', fontSize: 11, color: '#9999B8', margin: '6px 0 0', textAlign: 'center' }}>{children}</p>
+  <p style={{ fontFamily: 'Pretendard,sans-serif', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', margin: '6px 0 0', textAlign: 'center' }}>{children}</p>
 );
 
 // ── Meta ───────────────────────────────────────────────────────────────────

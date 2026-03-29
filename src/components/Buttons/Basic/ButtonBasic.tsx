@@ -21,12 +21,12 @@ const Spinner = ({ size }: { size: ButtonSize }) => {
 
 // ── Size Map ───────────────────────────────────────────────────────────────
 const sizeClasses: Record<ButtonSize, string> = {
-  xs:    'h-7 px-[10px] text-xs     rounded-[6px] gap-0.5',
-  sm:    'h-9 px-3      text-sm     rounded-[6px] gap-1',
-  md:    'h-10 px-3     text-[15px] rounded-md    gap-1',
-  lg:    'h-11 px-4     text-[15px] rounded-md    gap-1',
-  xl:    'h-12 px-4     text-base   rounded-md    gap-1.5',
-  '2xl': 'h-[52px] px-5 text-base  rounded-md    gap-1.5',
+  xs:    'h-7 px-[10px] text-xs     rounded-full gap-0.5',
+  sm:    'h-9 px-3      text-sm     rounded-full gap-1',
+  md:    'h-10 px-3     text-[15px] rounded-full gap-1',
+  lg:    'h-11 px-4     text-[15px] rounded-full gap-1',
+  xl:    'h-12 px-4     text-base   rounded-full gap-1.5',
+  '2xl': 'h-[52px] px-5 text-base  rounded-full gap-1.5',
 };
 
 const iconSizeClasses: Record<ButtonSize, string> = {

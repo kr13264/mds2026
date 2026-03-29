@@ -12,8 +12,8 @@ const sizeMap: Record<ImageCircleSize, number> = {
   '2xl': 52,
 };
 
-const FALLBACK_BG = '#D9D9D9';
-const FALLBACK_FG = '#B3B3B3';
+const FALLBACK_BG = 'var(--color-neutral-foreground-disabled)';
+const FALLBACK_FG = 'var(--color-neutral-foreground-disabled)';
 
 // noImage: 회색 원 + 회색 N (피그마 시안처럼 폰트 의존 없이 path로 구현)
 const NoImageIcon = ({ size }: { size: number }) => (
@@ -21,7 +21,7 @@ const NoImageIcon = ({ size }: { size: number }) => (
     {/* N */}
     <path
       d="M16 34V14h5.2l5.6 10.6V14H32v20h-5.2l-5.6-10.6V34H16z"
-      fill={FALLBACK_FG}
+      style={{ fill: FALLBACK_FG }}
     />
   </svg>
 );
@@ -29,10 +29,10 @@ const NoImageIcon = ({ size }: { size: number }) => (
 // noImgPerson: 회색 원 + 회색 사람 실루엣
 const NoImgPersonIcon = ({ size }: { size: number }) => (
   <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
-    <circle cx="24" cy="19" r="7.5" fill={FALLBACK_FG} />
+    <circle cx="24" cy="19" r="7.5" style={{ fill: FALLBACK_FG }} />
     <path
       d="M12.5 40.5c0-6.4 5.2-11.6 11.5-11.6s11.5 5.2 11.5 11.6V43H12.5v-2.5z"
-      fill={FALLBACK_FG}
+      style={{ fill: FALLBACK_FG }}
     />
   </svg>
 );
@@ -71,11 +71,11 @@ export const ImageCircle = ({
 
   if (type === 'placeHolder') {
     return (
-      <div style={{ ...base, background: '#e8e8ee' }} className={className}>
+      <div style={{ ...base, background: 'var(--color-neutral-background-separated-1)' }} className={className}>
         <style>{`@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}`}</style>
         <div style={{
           position: 'absolute', inset: 0, borderRadius: '50%',
-          background: 'linear-gradient(90deg, #e8e8ee 25%, #f4f4f8 50%, #e8e8ee 75%)',
+          background: 'linear-gradient(90deg, var(--color-neutral-background-separated-1) 25%, color-mix(in srgb, var(--color-neutral-background-separated-1) 60%, white) 50%, var(--color-neutral-background-separated-1) 75%)',
           backgroundSize: '200% 100%',
           animation: 'shimmer 1.4s infinite',
         }} />

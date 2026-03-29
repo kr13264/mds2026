@@ -6,103 +6,218 @@
    ───────────────────────────────────────────── */
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+@import "tailwindcss";
+@import "@bonui/styles";
+
+/* ── Dark mode via .dark class ── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─────────────────────────────────────────────
+   Tailwind theme: @bonui 토큰 → Tailwind 유틸리티
+   ───────────────────────────────────────────── */
+@theme inline {
+
+  /* ── Font family ── */
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ── Font size (text-10 ~ text-40) ── */
+  --text-10: var(--core-typography-font-size-10);
+  --text-11: var(--core-typography-font-size-11);
+  --text-12: var(--core-typography-font-size-12);
+  --text-13: var(--core-typography-font-size-13);
+  --text-14: var(--core-typography-font-size-14);
+  --text-15: var(--core-typography-font-size-15);
+  --text-16: var(--core-typography-font-size-16);
+  --text-17: var(--core-typography-font-size-17);
+  --text-18: var(--core-typography-font-size-18);
+  --text-19: var(--core-typography-font-size-19);
+  --text-20: var(--core-typography-font-size-20);
+  --text-22: var(--core-typography-font-size-22);
+  --text-24: var(--core-typography-font-size-24);
+  --text-26: var(--core-typography-font-size-26);
+  --text-28: var(--core-typography-font-size-28);
+  --text-32: var(--core-typography-font-size-32);
+  --text-40: var(--core-typography-font-size-40);
+
+  /* ── Line height (leading-12 ~ leading-48) ── */
+  --leading-12: var(--core-typography-line-height-12);
+  --leading-13: var(--core-typography-line-height-13);
+  --leading-15: var(--core-typography-line-height-15);
+  --leading-16: var(--core-typography-line-height-16);
+  --leading-17: var(--core-typography-line-height-17);
+  --leading-18: var(--core-typography-line-height-18);
+  --leading-19: var(--core-typography-line-height-19);
+  --leading-20: var(--core-typography-line-height-20);
+  --leading-21: var(--core-typography-line-height-21);
+  --leading-22: var(--core-typography-line-height-22);
+  --leading-23: var(--core-typography-line-height-23);
+  --leading-24: var(--core-typography-line-height-24);
+  --leading-25: var(--core-typography-line-height-25);
+  --leading-26: var(--core-typography-line-height-26);
+  --leading-27: var(--core-typography-line-height-27);
+  --leading-28: var(--core-typography-line-height-28);
+  --leading-32: var(--core-typography-line-height-32);
+  --leading-34: var(--core-typography-line-height-34);
+  --leading-36: var(--core-typography-line-height-36);
+  --leading-40: var(--core-typography-line-height-40);
+  --leading-48: var(--core-typography-line-height-48);
+
+  /* ── Letter spacing (tracking-bon-tight 등) ── */
+  --tracking-bon-tight:    var(--core-typography-letter-spacing-3);
+  --tracking-bon-tighter:  var(--core-typography-letter-spacing-4);
+  --tracking-bon-tightest: var(--core-typography-letter-spacing-10);
+
+  /* ── Border radius ── */
+  --radius-none: 0px;
+  --radius-sm:   var(--radius-2xs);  /* 4px  → rounded-sm  */
+  --radius:      var(--radius-xs);   /* 6px  → rounded     */
+  --radius-md:   var(--radius-s);    /* 8px  → rounded-md  */
+  --radius-lg:   var(--radius-m);    /* 12px → rounded-lg  */
+  --radius-xl:   var(--radius-xl);   /* 20px → rounded-xl  */
+  --radius-2xl:  var(--radius-2xl);  /* 24px → rounded-2xl */
+  --radius-3xl:  var(--radius-3xl);  /* 28px → rounded-3xl */
+  --radius-full: var(--radius-full); /* 999px → rounded-full */
+
+  /* ── Spacing (p-xs, m-m, gap-l 등 시맨틱 유틸리티) ── */
+  --spacing-none: var(--spacing-none);  /* 0px  */
+  --spacing-4xs:  var(--spacing-4xs);   /* 2px  */
+  --spacing-3xs:  var(--spacing-3xs);   /* 4px  */
+  --spacing-2xs:  var(--spacing-2xs);   /* 6px  */
+  --spacing-xs:   var(--spacing-xs);    /* 8px  */
+  --spacing-s:    var(--spacing-s);     /* 10px */
+  --spacing-m:    var(--spacing-m);     /* 12px */
+  --spacing-l:    var(--spacing-l);     /* 16px */
+  --spacing-xl:   var(--spacing-xl);    /* 20px */
+  --spacing-2xl:  var(--spacing-2xl);   /* 24px */
+  --spacing-3xl:  var(--spacing-3xl);   /* 28px */
+  --spacing-4xl:  var(--spacing-4xl);   /* 32px */
+  --spacing-5xl:  var(--spacing-5xl);   /* 36px */
+
+  /* ── Shadow ── */
+  --shadow: var(--shadow-light-neutral-default);
+
+  /* ── Gradient color stops (from-gradient-ai-1, to-gradient-ai-3 등) ── */
+  --color-gradient-placeholder-1:  var(--color-function-effect-gradation-placeholder-1);
+  --color-gradient-placeholder-2:  var(--color-function-effect-gradation-placeholder-2);
+  --color-gradient-ai-1:           var(--color-function-effect-gradation-ai-1);
+  --color-gradient-ai-2:           var(--color-function-effect-gradation-ai-2);
+  --color-gradient-ai-3:           var(--color-function-effect-gradation-ai-3);
+  --color-gradient-green-dot-1:    var(--color-function-effect-gradation-green-dot-1);
+  --color-gradient-green-dot-2:    var(--color-function-effect-gradation-green-dot-2);
+  --color-gradient-green-dot-3:    var(--color-function-effect-gradation-green-dot-3);
+  --color-gradient-n-logo-1:       var(--color-function-effect-gradation-n-logo-1);
+  --color-gradient-n-logo-2:       var(--color-function-effect-gradation-n-logo-2);
+
+  /* ── Colors: Neutral Background ── */
+  --color-neutral-background-default:          var(--color-neutral-background-default);
+  --color-neutral-background-alpha-1:          var(--color-neutral-background-alpha-1);
+  --color-neutral-background-alpha-2:          var(--color-neutral-background-alpha-2);
+  --color-neutral-background-alpha-3:          var(--color-neutral-background-alpha-3);
+  --color-neutral-background-disabled:         var(--color-neutral-background-disabled);
+  --color-neutral-background-base-basic:       var(--color-neutral-background-base-basic);
+  --color-neutral-background-raised-1:         var(--color-neutral-background-raised-1);
+  --color-neutral-background-raised-2:         var(--color-neutral-background-raised-2);
+  --color-neutral-background-separated-1:      var(--color-neutral-background-separated-1);
+  --color-neutral-background-separated-2:      var(--color-neutral-background-separated-2);
+  --color-neutral-background-inverted-1:       var(--color-neutral-background-inverted-1);
+  --color-neutral-background-inverted-2:       var(--color-neutral-background-inverted-2);
+  --color-neutral-background-inverted-3:       var(--color-neutral-background-inverted-3);
+  --color-neutral-background-static-white:     var(--color-neutral-background-static-white);
+  --color-neutral-background-static-black:     var(--color-neutral-background-static-black);
+  --color-neutral-background-dimmed-default:   var(--color-neutral-background-dimmed-default);
+  --color-neutral-background-dimmed-bold:      var(--color-neutral-background-dimmed-bold);
+  --color-neutral-background-dimmed-ghost:     var(--color-neutral-background-dimmed-ghost);
+
+  /* ── Colors: Neutral Foreground ── */
+  --color-neutral-foreground-default:          var(--color-neutral-foreground-default);
+  --color-neutral-foreground-subtle-1:         var(--color-neutral-foreground-subtle-1);
+  --color-neutral-foreground-subtle-2:         var(--color-neutral-foreground-subtle-2);
+  --color-neutral-foreground-subtle-3:         var(--color-neutral-foreground-subtle-3);
+  --color-neutral-foreground-disabled:         var(--color-neutral-foreground-disabled);
+  --color-neutral-foreground-inverted-default: var(--color-neutral-foreground-inverted-default);
+  --color-neutral-foreground-static-white:     var(--color-neutral-foreground-static-white);
+  --color-neutral-foreground-static-black:     var(--color-neutral-foreground-static-black);
+
+  /* ── Colors: Neutral Stroke ── */
+  --color-neutral-stroke-default:              var(--color-neutral-stroke-default);
+  --color-neutral-stroke-subtle-1:             var(--color-neutral-stroke-subtle-1);
+  --color-neutral-stroke-subtle-2:             var(--color-neutral-stroke-subtle-2);
+  --color-neutral-stroke-divider:              var(--color-neutral-stroke-divider);
+  --color-neutral-stroke-emphasis:             var(--color-neutral-stroke-emphasis);
+
+  /* ── Colors: Primary ── */
+  --color-primary-background-default:          var(--color-primary-background-default);
+  --color-primary-background-subtle-1:         var(--color-primary-background-subtle-1);
+  --color-primary-background-subtle-2:         var(--color-primary-background-subtle-2);
+  --color-primary-background-decorative:       var(--color-primary-background-decorative);
+  --color-primary-foreground-default:          var(--color-primary-foreground-default);
+  --color-primary-foreground-subtle:           var(--color-primary-foreground-subtle);
+  --color-primary-foreground-inverted:         var(--color-primary-foreground-inverted);
+  --color-primary-stroke-default:              var(--color-primary-stroke-default);
+
+  /* ── Colors: Secondary ── */
+  --color-secondary-background-default:        var(--color-secondary-background-default);
+  --color-secondary-background-subtle-1:       var(--color-secondary-background-subtle-1);
+  --color-secondary-foreground-default:        var(--color-secondary-foreground-default);
+  --color-secondary-stroke-default:            var(--color-secondary-stroke-default);
+
+  /* ── Colors: Function ── */
+  --color-function-positive-default:           var(--color-function-common-positive-default);
+  --color-function-positive-subtle:            var(--color-function-common-positive-subtle);
+  --color-function-negative-default:           var(--color-function-common-negative-default);
+  --color-function-negative-subtle:            var(--color-function-common-negative-subtle);
+  --color-function-informative-default:        var(--color-function-common-informative-default);
+  --color-function-informative-subtle:         var(--color-function-common-informative-subtle);
+  --color-function-attention-default:          var(--color-function-common-attention-default);
+  --color-function-attention-subtle:           var(--color-function-common-attention-subtle);
+}
+
+/* ── Dark mode: override @bonui tokens ── */
+.dark {
+  /* Neutral – Background */
+  --color-neutral-background-default:         #111122;
+  --color-neutral-background-base-basic:      #1A1A2E;
+  --color-neutral-background-raised-1:        #1E1E36;
+  --color-neutral-background-raised-2:        #2B2B4A;
+  --color-neutral-background-separated-1:     #252540;
+  --color-neutral-background-separated-2:     #2F2F50;
+  --color-neutral-background-disabled:        #2B2B4A;
+
+  /* Neutral – Foreground */
+  --color-neutral-foreground-default:         #F0F0F8;
+  --color-neutral-foreground-subtle-1:        #AAAACC;
+  --color-neutral-foreground-subtle-2:        #8888AA;
+  --color-neutral-foreground-subtle-3:        #6666AA;
+  --color-neutral-foreground-disabled:        #444466;
+
+  /* Neutral – Stroke */
+  --color-neutral-stroke-default:             #333355;
+  --color-neutral-stroke-subtle-1:            #2A2A48;
+  --color-neutral-stroke-divider:             #2E2E50;
+
+  /* Primary (greenDark 기준) */
+  --color-primary-background-default:         var(--core-color-dark-green-600);   /* #05AC4F */
+  --color-primary-background-subtle-1:        var(--core-color-dark-green-200);   /* #112E1E */
+  --color-primary-background-subtle-2:        var(--core-color-dark-green-300);   /* #0E4928 */
+  --color-primary-background-decorative:      var(--core-color-dark-green-700);   /* #03C75A */
+  --color-primary-foreground-default:         var(--core-color-dark-green-700);   /* #03C75A */
+  --color-primary-foreground-subtle:          var(--core-color-dark-green-500);   /* #089145 */
+  --color-primary-foreground-inverted:        var(--core-color-dark-green-200);   /* #112E1E */
+  --color-primary-stroke-default:             var(--core-color-dark-green-700);   /* #03C75A */
+
+  /* Function – Semantic (greenDark 기준) */
+  --color-function-common-positive-default:   var(--core-color-dark-green-700);   /* #03C75A */
+  --color-function-common-positive-subtle:    var(--core-color-dark-green-200);   /* #112E1E */
+  --color-function-common-negative-default:   var(--core-color-dark-red-800);     /* #FF5D49 */
+  --color-function-common-negative-subtle:    var(--core-color-dark-red-200);     /* #431C18 */
+  --color-function-common-attention-default:  var(--core-color-dark-yellow-700);  /* #FCC029 */
+  --color-function-common-attention-subtle:   var(--core-color-dark-yellow-200);  /* #362D16 */
+  --color-function-common-informative-default:var(--core-color-dark-blue-800);    /* #5196FD */
+  --color-function-common-informative-subtle: var(--core-color-dark-blue-200);    /* #1A283D */
+}
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ── BON UI CSS Variable Fallbacks (light mode) ── */
-/* Install @bonui/styles and import it for the full token set */
-/* import '@bonui/styles'; */
-
-:root {
-  /* Neutral – Background */
-  --neutral-background-default:         #F5F5F8;
-  --neutral-background-base-basic:      #FFFFFF;
-  --neutral-background-raised-1:        #FFFFFF;
-  --neutral-background-raised-2:        #F0F0F4;
-  --neutral-background-separated-1:     #F0F0F4;
-  --neutral-background-separated-2:     #E8E8EF;
-  --neutral-background-disabled:        #F0F0F4;
-  --neutral-background-inverted-1:      #111122;
-  --neutral-background-inverted-2:      #1E1E36;
-  --neutral-background-inverted-3:      #2B2B4A;
-  --neutral-background-static-white:    #FFFFFF;
-  --neutral-background-static-black:    #000000;
-  --neutral-background-dimmed-default:  rgba(0, 0, 0, 0.32);
-  --neutral-background-dimmed-bold:     rgba(0, 0, 0, 0.56);
-  --neutral-background-dimmed-ghost:    rgba(0, 0, 0, 0.08);
-  --neutral-background-alpha-1:         rgba(17, 17, 34, 0.04);
-  --neutral-background-alpha-2:         rgba(17, 17, 34, 0.08);
-  --neutral-background-alpha-3:         rgba(17, 17, 34, 0.12);
-
-  /* Neutral – Foreground */
-  --neutral-foreground-default:         #111122;
-  --neutral-foreground-subtle-1:        #55557A;
-  --neutral-foreground-subtle-2:        #7777A0;
-  --neutral-foreground-subtle-3:        #9999B8;
-  --neutral-foreground-disabled:        #BBBBCC;
-  --neutral-foreground-inverted-default:#FFFFFF;
-  --neutral-foreground-static-white:    #FFFFFF;
-  --neutral-foreground-static-black:    #000000;
-
-  /* Neutral – Stroke */
-  --neutral-stroke-default:             #DCDCE8;
-  --neutral-stroke-subtle-1:            #E8E8F0;
-  --neutral-stroke-subtle-2:            #F0F0F8;
-  --neutral-stroke-divider:             #E4E4EE;
-  --neutral-stroke-emphasis:            #111122;
-
-  /* Primary */
-  --primary-background-default:         #03A94D;
-  --primary-background-subtle-1:        #E6F9EE;
-  --primary-background-subtle-2:        #C0F0D4;
-  --primary-background-decorative:      #80E0AA;
-  --primary-foreground-default:         #03A94D;
-  --primary-foreground-subtle:          #1DBF60;
-  --primary-foreground-inverted:        #FFFFFF;
-  --primary-stroke-default:             #03A94D;
-
-  /* Secondary */
-  --secondary-background-default:       #3283FD;
-  --secondary-background-subtle-1:      #EBF2FF;
-  --secondary-foreground-default:       #3283FD;
-  --secondary-stroke-default:           #3283FD;
-
-  /* Function */
-  --function-common-positive-default:   #12B76A;
-  --function-common-positive-subtle:    #D1FAE5;
-  --function-common-negative-default:   #F04438;
-  --function-common-negative-subtle:    #FEE4E2;
-  --function-common-informative-default:#0BA5EC;
-  --function-common-informative-subtle: #E0F2FE;
-  --function-common-attention-default:  #F79009;
-  --function-common-attention-subtle:   #FEF3C7;
-}
-
-/* ── Dark mode overrides ── */
-.dark {
-  --neutral-background-default:         #111122;
-  --neutral-background-base-basic:      #1A1A2E;
-  --neutral-background-raised-1:        #1E1E36;
-  --neutral-background-raised-2:        #2B2B4A;
-  --neutral-background-separated-1:     #252540;
-  --neutral-background-separated-2:     #2F2F50;
-  --neutral-background-disabled:        #2B2B4A;
-
-  --neutral-foreground-default:         #F0F0F8;
-  --neutral-foreground-subtle-1:        #AAAACC;
-  --neutral-foreground-subtle-2:        #8888AA;
-  --neutral-foreground-subtle-3:        #6666AA;
-  --neutral-foreground-disabled:        #444466;
-
-  --neutral-stroke-default:             #333355;
-  --neutral-stroke-subtle-1:            #2A2A48;
-  --neutral-stroke-divider:             #2E2E50;
 }
 
 @layer base {
@@ -112,26 +227,74 @@
 
   body {
     @apply font-sans text-sm antialiased;
-    color: var(--neutral-foreground-default);
-    background-color: var(--neutral-background-default);
+    color: var(--color-neutral-foreground-default);
+    background-color: var(--color-neutral-background-default);
   }
+}
+
+/* ── Storybook Canvas background (story preview area) ── */
+.sb-show-main,
+.sb-main-centered,
+.sb-main-padded,
+#storybook-root {
+  background-color: var(--color-neutral-background-default) !important;
+}
+
+/* ── Storybook Docs story preview container ── */
+.docs-story,
+.docs-story > div,
+[data-docs-block],
+.story-block {
+  background-color: var(--color-neutral-background-default) !important;
 }
 
 /* ── Storybook Docs padding ── */
 .sbdocs-wrapper {
   padding-left: 40px !important;
   padding-right: 40px !important;
+  background-color: var(--color-neutral-background-default) !important;
+  color: var(--color-neutral-foreground-default) !important;
 }
 
-/* ── Storybook Docs table header ── */
+/* ── Storybook Docs content ── */
+.sbdocs-content {
+  background-color: var(--color-neutral-background-default) !important;
+  color: var(--color-neutral-foreground-default) !important;
+}
+
+.sbdocs-content h1,
+.sbdocs-content h2,
+.sbdocs-content h3,
+.sbdocs-content h4 {
+  color: var(--color-neutral-foreground-default) !important;
+}
+
+.sbdocs-content p,
+.sbdocs-content li {
+  color: var(--color-neutral-foreground-subtle-1) !important;
+}
+
+.sbdocs-content code {
+  background-color: var(--color-neutral-background-separated-1) !important;
+  color: var(--color-primary-foreground-default) !important;
+}
+
+/* ── Storybook Docs table ── */
 .sbdocs-content table thead tr {
-  background-color: #F5F5F8 !important;
+  background-color: var(--color-neutral-background-raised-1) !important;
+}
+.sbdocs-content table thead th {
+  color: var(--color-neutral-foreground-subtle-1) !important;
+  border-color: var(--color-neutral-stroke-divider) !important;
 }
 .sbdocs-content table tbody tr {
-  background-color: #FFFFFF !important;
+  background-color: var(--color-neutral-background-default) !important;
 }
-
-/* ── Storybook Docs table spacing ── */
+.sbdocs-content table tbody td {
+  color: var(--color-neutral-foreground-default) !important;
+  border-color: var(--color-neutral-stroke-divider) !important;
+}
 .sbdocs-content table {
   margin-bottom: 48px !important;
+  border-color: var(--color-neutral-stroke-divider) !important;
 }

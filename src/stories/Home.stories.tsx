@@ -1,21 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 // ── Icons ──────────────────────────────────────────────────────────────────
-// 일관된 사용자 경험 — Material Symbols "apps"
 const IconConsistency = () => (
-  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#55557A', userSelect: 'none' }}>
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--color-primary-foreground-default)', userSelect: 'none' }}>
     apps
   </span>
 );
-// 효율적인 업무 프로세스 — Material Symbols "hub"
 const IconProcess = () => (
-  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#55557A', userSelect: 'none' }}>
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--color-primary-foreground-default)', userSelect: 'none' }}>
     dataset_linked
   </span>
 );
-// 생산성 극대화 — Material Symbols "recycling"
 const IconProductivity = () => (
-  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#55557A', userSelect: 'none' }}>
+  <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--color-primary-foreground-default)', userSelect: 'none' }}>
     recycling
   </span>
 );
@@ -71,8 +68,8 @@ const usageItems = [
 const HomePage = () => (
   <div style={{
     fontFamily: "'Pretendard', -apple-system, sans-serif",
-    color: '#111122',
-    background: '#FFFFFF',
+    color: 'var(--color-neutral-foreground-default)',
+    background: 'var(--color-neutral-background-default)',
     padding: '40px',
     minHeight: '100vh',
     boxSizing: 'border-box',
@@ -81,10 +78,10 @@ const HomePage = () => (
 
       {/* ── Header ── */}
       <div style={{ marginBottom: '32px' }}>
-        <h1 style={{ fontSize: '36px', fontWeight: 800, margin: '0 0 8px', letterSpacing: '-0.5px', lineHeight: 1.2 }}>
+        <h1 style={{ fontSize: '36px', fontWeight: 800, margin: '0 0 8px', letterSpacing: '-0.5px', lineHeight: 1.2, color: 'var(--color-neutral-foreground-default)' }}>
           Main Design System
         </h1>
-        <p style={{ fontSize: '13px', color: '#9999B8', margin: 0 }}>
+        <p style={{ fontSize: '13px', color: 'var(--color-neutral-foreground-subtle-3)', margin: 0 }}>
           NAVER UX · last updated Mar 20, 2026
         </p>
       </div>
@@ -93,9 +90,10 @@ const HomePage = () => (
       <div style={{
         display: 'flex', alignItems: 'flex-start', gap: 10,
         padding: '14px 18px', borderRadius: 8,
-        background: '#F4F4F6', border: '1px solid #DDDDE8',
+        background: 'var(--color-neutral-background-raised-1)',
+        border: '1px solid var(--color-neutral-stroke-divider)',
         marginBottom: '40px',
-        fontSize: 14, color: '#111122', lineHeight: 1.6,
+        fontSize: 14, color: 'var(--color-neutral-foreground-default)', lineHeight: 1.6,
       }}>
         <span>MDS는 일관되고 효율적인 네이버앱과 메인 서비스 경험을 만들기 위한 통합 디자인 시스템입니다.</span>
       </div>
@@ -105,7 +103,7 @@ const HomePage = () => (
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: 0,
-        border: '1px solid #E4E4EE',
+        border: '1px solid var(--color-neutral-stroke-divider)',
         borderRadius: 12,
         overflow: 'hidden',
         marginBottom: '48px',
@@ -119,15 +117,16 @@ const HomePage = () => (
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px 32px',
-            borderRight: i < 2 ? '1px solid #E4E4EE' : 'none',
+            background: 'var(--color-neutral-background-default)',
+            borderRight: i < 2 ? '1px solid var(--color-neutral-stroke-divider)' : 'none',
             textAlign: 'center', gap: 24,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 72 }}>
               {card.icon}
             </div>
             <div>
-              <p style={{ fontSize: 13, color: '#9999B8', margin: '0 0 4px', lineHeight: 1.5 }}>{card.desc}</p>
-              <p style={{ fontSize: 15, fontWeight: 700, color: '#111122', margin: 0, lineHeight: 1.4 }}>{card.title}</p>
+              <p style={{ fontSize: 13, color: 'var(--color-neutral-foreground-subtle-2)', margin: '0 0 4px', lineHeight: 1.5 }}>{card.desc}</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: 'var(--color-neutral-foreground-default)', margin: 0, lineHeight: 1.4 }}>{card.title}</p>
             </div>
           </div>
         ))}
@@ -135,22 +134,22 @@ const HomePage = () => (
 
       {/* ── 범위 ── */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: 20, fontWeight: 700, color: '#111122', margin: '0 0 16px', letterSpacing: '-0.3px' }}>범위</h2>
+        <h2 style={{ fontSize: 20, fontWeight: 700, color: 'var(--color-neutral-foreground-default)', margin: '0 0 16px', letterSpacing: '-0.3px' }}>범위</h2>
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13, border: '1px solid #E4E4EE', borderRadius: 8, overflow: 'hidden' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13, border: '1px solid var(--color-neutral-stroke-divider)', borderRadius: 8, overflow: 'hidden' }}>
             <thead>
-              <tr style={{ background: '#F7F7F9' }}>
-                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE', whiteSpace: 'nowrap', width: '160px' }}>Category</th>
-                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE' }}>Description</th>
+              <tr style={{ background: 'var(--color-neutral-background-raised-1)' }}>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: 'var(--color-neutral-foreground-default)', borderBottom: '1px solid var(--color-neutral-stroke-divider)', whiteSpace: 'nowrap', width: '160px' }}>Category</th>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: 'var(--color-neutral-foreground-default)', borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>Description</th>
               </tr>
             </thead>
             <tbody>
               {scopeItems.map((item) => (
-                <tr key={item.name} style={{ borderBottom: '1px solid #E4E4EE' }}>
-                  <td style={{ padding: '14px 20px', fontFamily: 'monospace', fontSize: 12, color: item.disabled ? '#BBBBCC' : '#111122', verticalAlign: 'top', whiteSpace: 'nowrap', borderRight: '1px solid #E4E4EE' }}>{item.name}</td>
+                <tr key={item.name} style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)', background: 'var(--color-neutral-background-default)' }}>
+                  <td style={{ padding: '14px 20px', fontFamily: 'monospace', fontSize: 12, color: item.disabled ? 'var(--color-neutral-foreground-disabled)' : 'var(--color-neutral-foreground-default)', verticalAlign: 'top', whiteSpace: 'nowrap', borderRight: '1px solid var(--color-neutral-stroke-divider)' }}>{item.name}</td>
                   <td style={{ padding: '14px 20px', verticalAlign: 'top' }}>
                     {item.desc.map((d, i) => (
-                      <p key={i} style={{ margin: i === 0 ? '0 0 4px' : 0, fontSize: 13, color: item.disabled ? '#BBBBCC' : (i === 0 ? '#111122' : '#55557A'), lineHeight: 1.6 }}>{d}</p>
+                      <p key={i} style={{ margin: i === 0 ? '0 0 4px' : 0, fontSize: 13, color: item.disabled ? 'var(--color-neutral-foreground-disabled)' : (i === 0 ? 'var(--color-neutral-foreground-default)' : 'var(--color-neutral-foreground-subtle-1)'), lineHeight: 1.6 }}>{d}</p>
                     ))}
                   </td>
                 </tr>
@@ -162,22 +161,22 @@ const HomePage = () => (
 
       {/* ── 활용 ── */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: 20, fontWeight: 700, color: '#111122', margin: '0 0 16px', letterSpacing: '-0.3px' }}>활용</h2>
+        <h2 style={{ fontSize: 20, fontWeight: 700, color: 'var(--color-neutral-foreground-default)', margin: '0 0 16px', letterSpacing: '-0.3px' }}>활용</h2>
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13, border: '1px solid #E4E4EE', borderRadius: 8, overflow: 'hidden' }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13, border: '1px solid var(--color-neutral-stroke-divider)', borderRadius: 8, overflow: 'hidden' }}>
             <thead>
-              <tr style={{ background: '#F7F7F9' }}>
-                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE', whiteSpace: 'nowrap', width: '120px' }}>Category</th>
-                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: '#111122', borderBottom: '1px solid #E4E4EE' }}>Guidelines</th>
+              <tr style={{ background: 'var(--color-neutral-background-raised-1)' }}>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: 'var(--color-neutral-foreground-default)', borderBottom: '1px solid var(--color-neutral-stroke-divider)', whiteSpace: 'nowrap', width: '120px' }}>Category</th>
+                <th style={{ padding: '10px 20px', textAlign: 'center', fontWeight: 700, color: 'var(--color-neutral-foreground-default)', borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>Guidelines</th>
               </tr>
             </thead>
             <tbody>
               {usageItems.map((section) => (
-                <tr key={section.name} style={{ borderBottom: '1px solid #E4E4EE' }}>
-                  <td style={{ padding: '14px 20px', fontFamily: 'monospace', fontSize: 12, color: '#111122', verticalAlign: 'top', whiteSpace: 'nowrap', borderRight: '1px solid #E4E4EE' }}>{section.name}</td>
+                <tr key={section.name} style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)', background: 'var(--color-neutral-background-default)' }}>
+                  <td style={{ padding: '14px 20px', fontFamily: 'monospace', fontSize: 12, color: 'var(--color-neutral-foreground-default)', verticalAlign: 'top', whiteSpace: 'nowrap', borderRight: '1px solid var(--color-neutral-stroke-divider)' }}>{section.name}</td>
                   <td style={{ padding: '14px 20px', verticalAlign: 'top' }}>
                     {section.items.map((d, i) => (
-                      <p key={i} style={{ margin: i < section.items.length - 1 ? '0 0 6px' : 0, fontSize: 13, color: '#55557A', lineHeight: 1.6 }}>• {d}</p>
+                      <p key={i} style={{ margin: i < section.items.length - 1 ? '0 0 6px' : 0, fontSize: 13, color: 'var(--color-neutral-foreground-subtle-1)', lineHeight: 1.6 }}>• {d}</p>
                     ))}
                   </td>
                 </tr>
@@ -189,13 +188,13 @@ const HomePage = () => (
 
       {/* ── 시스템 구성 ── */}
       <div style={{ marginBottom: '48px' }}>
-        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#9999B8', margin: '0 0 16px' }}>System</p>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--color-neutral-foreground-subtle-3)', margin: '0 0 16px' }}>System</p>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 13 }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #E4E4EE' }}>
+              <tr style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>
                 {['Section', 'Description', 'Status'].map(h => (
-                  <th key={h} style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontWeight: 700, color: '#55557A', whiteSpace: 'nowrap' }}>{h}</th>
+                  <th key={h} style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontWeight: 700, color: 'var(--color-neutral-foreground-subtle-1)', whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -206,11 +205,13 @@ const HomePage = () => (
                 { title: 'Components', desc: 'Badge, Button, Chip, Divider, Image, Profile 등 재사용 가능한 UI 컴포넌트를 제공합니다.', status: 'Live' },
                 { title: 'Templates',  desc: '자주 사용되는 레이아웃 패턴 및 페이지 템플릿을 제공합니다.', status: 'Coming Soon' },
               ].map(s => {
-                const sc = s.status === 'Live' ? { color: '#03A94D', bg: '#E6F9EE' } : { color: '#9999B8', bg: '#F0F0F4' };
+                const sc = s.status === 'Live'
+                  ? { color: 'var(--color-function-positive-default)', bg: 'var(--color-function-positive-subtle)' }
+                  : { color: 'var(--color-neutral-foreground-subtle-3)', bg: 'var(--color-neutral-background-separated-1)' };
                 return (
-                  <tr key={s.title} style={{ borderBottom: '1px solid #F0F0F8' }}>
-                    <td style={{ padding: '12px 16px 12px 0', fontWeight: 700, color: '#111122', whiteSpace: 'nowrap', verticalAlign: 'top' }}>{s.title}</td>
-                    <td style={{ padding: '12px 16px 12px 0', color: '#55557A', lineHeight: 1.6, verticalAlign: 'top' }}>{s.desc}</td>
+                  <tr key={s.title} style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>
+                    <td style={{ padding: '12px 16px 12px 0', fontWeight: 700, color: 'var(--color-neutral-foreground-default)', whiteSpace: 'nowrap', verticalAlign: 'top' }}>{s.title}</td>
+                    <td style={{ padding: '12px 16px 12px 0', color: 'var(--color-neutral-foreground-subtle-1)', lineHeight: 1.6, verticalAlign: 'top' }}>{s.desc}</td>
                     <td style={{ padding: '12px 0', verticalAlign: 'top' }}>
                       <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: 4, fontSize: 11, fontWeight: 700, background: sc.bg, color: sc.color }}>{s.status}</span>
                     </td>
@@ -224,7 +225,7 @@ const HomePage = () => (
 
       {/* ── Components ── */}
       <div style={{ marginBottom: '48px' }}>
-        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#9999B8', margin: '0 0 16px' }}>Components</p>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--color-neutral-foreground-subtle-3)', margin: '0 0 16px' }}>Components</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {[
             { name: 'Badge', status: 'Live' }, { name: 'Button', status: 'Live' },
@@ -234,14 +235,17 @@ const HomePage = () => (
             { name: 'Modal', status: 'Coming Soon' }, { name: 'Toast', status: 'Coming Soon' },
             { name: 'Tab', status: 'Coming Soon' },   { name: 'Toggle', status: 'Coming Soon' },
           ].map(c => {
-            const sc = c.status === 'Live' ? { color: '#03A94D', bg: '#E6F9EE' } : { color: '#9999B8', bg: '#F0F0F4' };
+            const sc = c.status === 'Live'
+              ? { color: 'var(--color-function-positive-default)', bg: 'var(--color-function-positive-subtle)' }
+              : { color: 'var(--color-neutral-foreground-subtle-3)', bg: 'var(--color-neutral-background-separated-1)' };
             return (
               <div key={c.name} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '8px 14px', borderRadius: 8,
-                border: '1px solid #E4E4EE', background: '#FFFFFF',
+                border: '1px solid var(--color-neutral-stroke-divider)',
+                background: 'var(--color-neutral-background-default)',
               }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: '#111122' }}>{c.name}</span>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-neutral-foreground-default)' }}>{c.name}</span>
                 <span style={{ padding: '1px 6px', borderRadius: 3, fontSize: 10, fontWeight: 700, background: sc.bg, color: sc.color }}>{c.status}</span>
               </div>
             );
@@ -250,9 +254,9 @@ const HomePage = () => (
       </div>
 
       {/* ── Footer ── */}
-      <div style={{ paddingTop: 24, borderTop: '1px solid #E4E4EE', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-        <span style={{ fontSize: 12, color: '#9999B8' }}>MDS Design System · NAVER UX · 2025</span>
-        <span style={{ fontSize: 12, color: '#9999B8' }}>Storybook 8 · React 18 · Tailwind CSS v3</span>
+      <div style={{ paddingTop: 24, borderTop: '1px solid var(--color-neutral-stroke-divider)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+        <span style={{ fontSize: 12, color: 'var(--color-neutral-foreground-subtle-3)' }}>MDS Design System · NAVER UX · 2026</span>
+        <span style={{ fontSize: 12, color: 'var(--color-neutral-foreground-subtle-3)' }}>Storybook 8 · React 18 · Tailwind CSS v4</span>
       </div>
 
     </div>
@@ -262,7 +266,7 @@ const HomePage = () => (
 const meta: Meta<typeof HomePage> = {
   title: 'Home',
   component: HomePage,
-  parameters: { layout: 'padded' },
+  parameters: { layout: 'fullscreen' },
 };
 
 export default meta;

@@ -17,25 +17,25 @@ const ComingSoon = () => (
   }}>
     <div style={{
       width: '56px', height: '56px', borderRadius: '12px',
-      background: '#EEF2FF', display: 'flex',
+      background: 'var(--color-primary-background-subtle-1)', display: 'flex',
       alignItems: 'center', justifyContent: 'center',
-      fontSize: '22px', color: '#6366F1',
+      fontSize: '22px', color: 'var(--color-primary-foreground-default)',
     }}>⬒</div>
     <div>
-      <h2 style={{ fontSize: '17px', fontWeight: '700', color: '#111122', margin: '0 0 6px' }}>
+      <h2 style={{ fontSize: '17px', fontWeight: '700', color: 'var(--color-neutral-foreground-default)', margin: '0 0 6px' }}>
         Search
       </h2>
-      <p style={{ fontSize: '13px', color: '#55557A', margin: '0 0 4px', lineHeight: 1.6, maxWidth: '320px' }}>
+      <p style={{ fontSize: '13px', color: 'var(--color-neutral-foreground-subtle-1)', margin: '0 0 4px', lineHeight: 1.6, maxWidth: '320px' }}>
         검색 인풋 컴포넌트.
       </p>
-      <p style={{ fontSize: '12px', color: '#9999B8', margin: 0 }}>
+      <p style={{ fontSize: '12px', color: 'var(--color-neutral-foreground-subtle-3)', margin: 0 }}>
         SKILL.md 기준에 맞춰 작업 예정
       </p>
     </div>
     <div style={{
       padding: '8px 14px', borderRadius: '6px',
-      background: '#F5F5F8', border: '1px solid #E4E4EE',
-      fontSize: '11px', color: '#9999B8', fontFamily: 'monospace',
+      background: 'var(--color-neutral-background-separated-1)', border: '1px solid var(--color-neutral-stroke-divider)',
+      fontSize: '11px', color: 'var(--color-neutral-foreground-subtle-3)', fontFamily: 'monospace',
     }}>
       src/components/Search/Search.tsx
     </div>

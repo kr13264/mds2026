@@ -40,9 +40,9 @@ export const ProfileHorizontal = ({
           overflow: 'hidden',
           flexShrink: 0,
           position: 'relative',
-          outline: selected ? '2px solid #3283fd' : 'none',
+          outline: selected ? '2px solid var(--color-secondary-foreground-default)' : 'none',
           outlineOffset: 1,
-          background: '#f0f0f4',
+          background: 'var(--color-neutral-background-separated-1)',
         }}
       >
         {src ? (
@@ -56,7 +56,7 @@ export const ProfileHorizontal = ({
             style={{
               width: '100%',
               height: '100%',
-              background: '#E4E4EE',
+              background: 'var(--color-neutral-stroke-divider)',
             }}
           />
         )}
@@ -79,7 +79,7 @@ export const ProfileHorizontal = ({
             style={{
               fontSize,
               fontWeight: emphasis ? 600 : 400,
-              color: '#2e2e2e',
+              color: 'var(--color-neutral-foreground-default)',
               lineHeight: '19px',
               letterSpacing: -0.3,
               whiteSpace: 'nowrap',
@@ -94,7 +94,7 @@ export const ProfileHorizontal = ({
                   width: 3,
                   height: 3,
                   borderRadius: '50%',
-                  background: '#d9d9d9',
+                  background: 'var(--color-neutral-foreground-disabled)',
                   flexShrink: 0,
                   display: 'inline-block',
                 }}
@@ -103,7 +103,7 @@ export const ProfileHorizontal = ({
                 style={{
                   fontSize,
                   fontWeight: 400,
-                  color: '#737373',
+                  color: 'var(--color-neutral-foreground-subtle-2)',
                   lineHeight: '19px',
                   letterSpacing: -0.3,
                   whiteSpace: 'nowrap',
@@ -121,7 +121,7 @@ export const ProfileHorizontal = ({
             style={{
               fontSize,
               fontWeight: 400,
-              color: '#737373',
+              color: 'var(--color-neutral-foreground-subtle-2)',
               lineHeight: '19px',
               letterSpacing: -0.3,
               whiteSpace: 'nowrap',

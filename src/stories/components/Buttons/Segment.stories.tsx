@@ -13,15 +13,15 @@ const Block = ({ label, desc, children }: { label: string; desc?: string; childr
     <p style={{
       fontFamily: 'Pretendard, sans-serif',
       fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
-      textTransform: 'uppercase', color: '#9999B8', margin: '0 0 4px',
+      textTransform: 'uppercase', color: 'var(--color-neutral-foreground-subtle-3)', margin: '0 0 4px',
     }}>{label}</p>
-    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: '#55557A', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
+    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: 'var(--color-neutral-foreground-subtle-1)', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
     {children}
   </div>
 );
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 11, color: '#9999B8', margin: '6px 0 0', textAlign: 'center' }}>{children}</p>
+  <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', margin: '6px 0 0', textAlign: 'center' }}>{children}</p>
 );
 
 // ── Controlled wrapper for stories ─────────────────────────────────────────
@@ -275,11 +275,11 @@ export const Matrix: Story = {
         <table style={{ borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontSize: 11, color: '#9999B8', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+              <th style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
                 shape \ type
               </th>
               {types.map(t => (
-                <th key={t} style={{ padding: '8px 24px', fontSize: 11, color: '#9999B8', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+                <th key={t} style={{ padding: '8px 24px', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
                   {t}
                 </th>
               ))}
@@ -287,8 +287,8 @@ export const Matrix: Story = {
           </thead>
           <tbody>
             {shapes.map(sh => (
-              <tr key={sh} style={{ borderTop: '1px solid #F0F0F8' }}>
-                <td style={{ padding: '16px 16px 16px 0', fontSize: 12, fontWeight: 600, color: '#55557A', verticalAlign: 'middle' }}>
+              <tr key={sh} style={{ borderTop: '1px solid var(--color-neutral-stroke-divider)' }}>
+                <td style={{ padding: '16px 16px 16px 0', fontSize: 12, fontWeight: 600, color: 'var(--color-neutral-foreground-subtle-1)', verticalAlign: 'middle' }}>
                   {sh}
                 </td>
                 {types.map(t => (

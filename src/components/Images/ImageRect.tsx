@@ -47,7 +47,7 @@ const PlaceholderSkeleton = () => (
   <div
     className="absolute inset-0 animate-pulse"
     style={{
-      background: 'linear-gradient(135deg, #F0F2F4 0%, #F5F8FB 50%, #F0F2F4 100%)',
+      background: 'linear-gradient(135deg, var(--color-neutral-background-separated-1) 0%, color-mix(in srgb, var(--color-neutral-background-separated-1) 60%, white) 50%, var(--color-neutral-background-separated-1) 100%)',
       backgroundSize: '200% 200%',
     }}
   />
@@ -57,11 +57,11 @@ const PlaceholderSkeleton = () => (
 const BadgeIcon = () => (
   <div
     className="absolute top-2 right-2 w-7 h-7 rounded-full flex items-center justify-center"
-    style={{ background: 'rgba(255,255,255,0.9)', boxShadow: '0 1px 4px rgba(0,0,0,.15)' }}
+    style={{ background: 'var(--color-neutral-background-raised-1)', boxShadow: '0 1px 4px rgba(0,0,0,.15)' }}
   >
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <circle cx="7" cy="5" r="2" stroke="#111122" strokeWidth="1.4" />
-      <path d="M2 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#111122" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="7" cy="5" r="2" stroke="var(--color-neutral-foreground-default)" strokeWidth="1.4" />
+      <path d="M2 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="var(--color-neutral-foreground-default)" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   </div>
 );
@@ -111,7 +111,7 @@ export const ImageRect = ({
 
       {type === 'noImage' && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2"
-          style={{ background: '#f7f7f9' }}>
+          style={{ background: 'var(--color-neutral-background-separated-1)' }}>
           <NoImageIcon />
           <span className="text-xs" style={{ color: 'rgba(0,0,0,.3)' }}>이미지 없음</span>
         </div>

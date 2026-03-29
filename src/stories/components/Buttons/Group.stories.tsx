@@ -12,15 +12,15 @@ const Block = ({ label, desc, children }: { label: string; desc?: string; childr
     <p style={{
       fontFamily: 'Pretendard, sans-serif',
       fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
-      textTransform: 'uppercase', color: '#9999B8', margin: '0 0 4px',
+      textTransform: 'uppercase', color: 'var(--color-neutral-foreground-subtle-3)', margin: '0 0 4px',
     }}>{label}</p>
-    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: '#55557A', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
+    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: 'var(--color-neutral-foreground-subtle-1)', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
     {children}
   </div>
 );
 
 const Caption = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 11, color: '#9999B8', margin: '6px 0 0', textAlign: 'center' }}>{children}</p>
+  <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', margin: '6px 0 0', textAlign: 'center' }}>{children}</p>
 );
 
 // ── Meta ───────────────────────────────────────────────────────────────────
@@ -137,10 +137,10 @@ export const Sizes: Story = {
         <div style={{ overflowX: 'auto' }}>
           <table style={{ borderCollapse: 'collapse', fontFamily: 'Pretendard, sans-serif', fontSize: 12, whiteSpace: 'nowrap' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #E4E4EE' }}>
+              <tr style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>
                 {['Attribute', 'sm', 'md', 'lg'].map(h => (
-                  <th key={h} style={{ padding: '8px 32px', textAlign: 'center', fontWeight: 700, color: '#55557A',
-                    ...(h !== 'Attribute' ? { background: '#F5F5F8' } : {}) }}>{h}</th>
+                  <th key={h} style={{ padding: '8px 32px', textAlign: 'center', fontWeight: 700, color: 'var(--color-neutral-foreground-subtle-1)',
+                    ...(h !== 'Attribute' ? { background: 'var(--color-neutral-background-separated-1)' } : {}) }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -149,9 +149,9 @@ export const Sizes: Story = {
                 ['Height', '36', '40', '44'],
                 ['Text size', '14', '15', '15'],
               ].map(row => (
-                <tr key={row[0]} style={{ borderBottom: '1px solid #F0F0F8' }}>
+                <tr key={row[0]} style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>
                   {row.map((cell, i) => (
-                    <td key={i} style={{ padding: '8px 32px', textAlign: 'center', color: i === 0 ? '#55557A' : '#111122', fontWeight: i === 0 ? 600 : 400 }}>
+                    <td key={i} style={{ padding: '8px 32px', textAlign: 'center', color: i === 0 ? 'var(--color-neutral-foreground-subtle-1)' : 'var(--color-neutral-foreground-default)', fontWeight: i === 0 ? 600 : 400 }}>
                       {cell}
                     </td>
                   ))}
@@ -241,11 +241,11 @@ export const Matrix: Story = {
         <table style={{ borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontSize: 11, color: '#9999B8', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+              <th style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
                 shape \ size
               </th>
               {sizes.map(s => (
-                <th key={s} style={{ padding: '8px 24px', fontSize: 11, color: '#9999B8', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+                <th key={s} style={{ padding: '8px 24px', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
                   {s}
                 </th>
               ))}
@@ -253,8 +253,8 @@ export const Matrix: Story = {
           </thead>
           <tbody>
             {shapes.map(sh => (
-              <tr key={sh} style={{ borderTop: '1px solid #F0F0F8' }}>
-                <td style={{ padding: '16px 16px 16px 0', fontSize: 12, fontWeight: 600, color: '#55557A', verticalAlign: 'middle' }}>
+              <tr key={sh} style={{ borderTop: '1px solid var(--color-neutral-stroke-divider)' }}>
+                <td style={{ padding: '16px 16px 16px 0', fontSize: 12, fontWeight: 600, color: 'var(--color-neutral-foreground-subtle-1)', verticalAlign: 'middle' }}>
                   {sh}
                 </td>
                 {sizes.map(s => (

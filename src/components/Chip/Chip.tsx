@@ -37,12 +37,12 @@ export const Chip = ({
   const showClose = multiSelect && selected;
 
   // ── 색상 ──────────────────────────────────────────────────────────────────
-  const bg          = selected ? '#03A94D' : '#FFFFFF';
-  const textColor   = selected ? '#FFFFFF' : '#111122';
-  const borderColor = selected ? 'transparent' : 'rgba(0,0,0,0.1)';
+  const bg          = selected ? 'var(--color-primary-background-default)' : 'var(--color-neutral-background-raised-1)';
+  const textColor   = selected ? 'var(--color-neutral-background-static-white)' : 'var(--color-neutral-foreground-default)';
+  const borderColor = selected ? 'transparent' : 'var(--color-neutral-stroke-default)';
   const opacity     = disabled ? 0.4 : 1;
 
-  const iconColor = selected ? '#FFFFFF' : '#55557A';
+  const iconColor = selected ? 'var(--color-neutral-background-static-white)' : 'var(--color-neutral-foreground-subtle-1)';
 
   return (
     <button

@@ -12,9 +12,9 @@ const Block = ({ label, desc, children }: { label: string; desc?: string; childr
     <p style={{
       fontFamily: 'Pretendard, sans-serif',
       fontSize: 11, fontWeight: 700, letterSpacing: '0.07em',
-      textTransform: 'uppercase', color: '#9999B8', margin: '0 0 4px',
+      textTransform: 'uppercase', color: 'var(--color-neutral-foreground-subtle-3)', margin: '0 0 4px',
     }}>{label}</p>
-    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: '#55557A', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
+    {desc && <p style={{ fontFamily: 'Pretendard, sans-serif', fontSize: 12, color: 'var(--color-neutral-foreground-subtle-1)', margin: '0 0 12px', lineHeight: 1.6 }}>{desc}</p>}
     {children}
   </div>
 );
@@ -144,9 +144,9 @@ export const Sizes: Story = {
         <div style={{ overflowX: 'auto' }}>
           <table style={{ borderCollapse: 'collapse', fontFamily: 'Pretendard, sans-serif', fontSize: 12, whiteSpace: 'nowrap' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #E4E4EE' }}>
+              <tr style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>
                 {['Attribute', 'default', 'small'].map(h => (
-                  <th key={h} style={{ padding: '8px 24px', textAlign: 'center', fontWeight: 700, color: '#55557A' }}>{h}</th>
+                  <th key={h} style={{ padding: '8px 24px', textAlign: 'center', fontWeight: 700, color: 'var(--color-neutral-foreground-subtle-1)' }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -157,9 +157,9 @@ export const Sizes: Story = {
                 ['Line height', '19px', '19px'],
                 ['Component height', '92px', '78px'],
               ].map(row => (
-                <tr key={row[0]} style={{ borderBottom: '1px solid #F0F0F8' }}>
+                <tr key={row[0]} style={{ borderBottom: '1px solid var(--color-neutral-stroke-divider)' }}>
                   {row.map((cell, i) => (
-                    <td key={i} style={{ padding: '8px 24px', textAlign: 'center', color: i === 0 ? '#55557A' : '#111122', fontWeight: i === 0 ? 600 : 400 }}>
+                    <td key={i} style={{ padding: '8px 24px', textAlign: 'center', color: i === 0 ? 'var(--color-neutral-foreground-subtle-1)' : 'var(--color-neutral-foreground-default)', fontWeight: i === 0 ? 600 : 400 }}>
                       {cell}
                     </td>
                   ))}
@@ -175,7 +175,7 @@ export const Sizes: Story = {
           {(['default', 'small'] as ProfileSize[]).map(s => (
             <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
               <ProfileVertical size={s} name="홍길동" info="3분 전" src={AVATAR} />
-              <code style={{ fontFamily: 'monospace', fontSize: 11, color: '#9999B8' }}>size="{s}"</code>
+              <code style={{ fontFamily: 'monospace', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)' }}>size="{s}"</code>
             </div>
           ))}
         </Row>
@@ -266,12 +266,12 @@ export const Matrix: Story = {
         <table style={{ borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontSize: 11, color: '#9999B8', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+              <th style={{ padding: '8px 16px 8px 0', textAlign: 'left', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
                 size \ emphasis · selected
               </th>
               {emphasisOpts.flatMap(e =>
                 selectedOpts.map(s => (
-                  <th key={`${e}-${s}`} style={{ padding: '8px 16px', fontSize: 11, color: '#9999B8', fontWeight: 700, letterSpacing: '0.07em', textAlign: 'center' }}>
+                  <th key={`${e}-${s}`} style={{ padding: '8px 16px', fontSize: 11, color: 'var(--color-neutral-foreground-subtle-3)', fontWeight: 700, letterSpacing: '0.07em', textAlign: 'center' }}>
                     em={String(e)} sel={String(s)}
                   </th>
                 ))
@@ -280,8 +280,8 @@ export const Matrix: Story = {
           </thead>
           <tbody>
             {sizes.map(size => (
-              <tr key={size} style={{ borderTop: '1px solid #F0F0F8' }}>
-                <td style={{ padding: '16px 16px 16px 0', fontSize: 12, fontWeight: 600, color: '#55557A', verticalAlign: 'middle' }}>
+              <tr key={size} style={{ borderTop: '1px solid var(--color-neutral-stroke-divider)' }}>
+                <td style={{ padding: '16px 16px 16px 0', fontSize: 12, fontWeight: 600, color: 'var(--color-neutral-foreground-subtle-1)', verticalAlign: 'middle' }}>
                   {size}
                 </td>
                 {emphasisOpts.flatMap(e =>

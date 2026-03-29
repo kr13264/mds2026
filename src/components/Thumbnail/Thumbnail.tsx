@@ -74,7 +74,7 @@ export const Thumbnail = ({
         borderRadius: br,
         overflow: 'hidden',
         flexShrink: 0,
-        background: '#f0f0f4',
+        background: 'var(--color-neutral-background-separated-1)',
         fontFamily: 'Pretendard, -apple-system, sans-serif',
       }}
       className={className}
@@ -104,7 +104,7 @@ export const Thumbnail = ({
           position: 'absolute', top: 8, left: 8,
           padding: '3px 6px',
           borderRadius: 999,
-          background: '#03A94D',
+          background: 'var(--color-primary-background-default)',
           color: '#fff',
           fontSize: 11, fontWeight: 700, lineHeight: '16px',
           letterSpacing: -0.3,

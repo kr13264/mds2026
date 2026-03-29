@@ -3,17 +3,17 @@ import skillMd from '../../../SKILL.md?raw';
 
 // ── 토큰 ────────────────────────────────────────────────────────────────────
 const C = {
-  bg:       '#FFFFFF',
-  sidebar:  '#F5F5F5',
-  border:   '#E5E5E5',
-  divider:  '#F0F0F0',
-  text:     '#111111',
-  sub:      '#555555',
-  muted:    '#999999',
-  primary:  '#111111',
-  codeBg:   '#F3F3F3',
-  codeText: '#1A1A1A',
-  inlineBg: '#EBEBEB',
+  bg:       'var(--color-neutral-background-default)',
+  sidebar:  'var(--color-neutral-background-separated-1)',
+  border:   'var(--color-neutral-stroke-divider)',
+  divider:  'var(--color-neutral-stroke-divider)',
+  text:     'var(--color-neutral-foreground-default)',
+  sub:      'var(--color-neutral-foreground-subtle-1)',
+  muted:    'var(--color-neutral-foreground-subtle-3)',
+  primary:  'var(--color-neutral-foreground-default)',
+  codeBg:   'var(--color-neutral-background-separated-1)',
+  codeText: 'var(--color-neutral-foreground-default)',
+  inlineBg: 'var(--color-neutral-background-separated-1)',
 };
 
 // ── 마크다운 렌더러 ──────────────────────────────────────────────────────────
@@ -378,7 +378,7 @@ function SkillGuidePage() {
               onMouseEnter={e => {
                 (e.currentTarget as HTMLAnchorElement).style.color = C.primary;
                 (e.currentTarget as HTMLAnchorElement).style.borderLeftColor = C.primary;
-                (e.currentTarget as HTMLAnchorElement).style.background = '#EEEEFF';
+                (e.currentTarget as HTMLAnchorElement).style.background = 'var(--color-primary-background-subtle-1)';
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLAnchorElement).style.color = C.sub;
@@ -409,7 +409,7 @@ function SkillGuidePage() {
         }}>
           <div style={{
             width: 40, height: 40, borderRadius: 10,
-            background: 'linear-gradient(135deg, #222222, #555555)',
+            background: 'linear-gradient(135deg, var(--color-neutral-foreground-default), var(--color-neutral-foreground-subtle-1))',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
